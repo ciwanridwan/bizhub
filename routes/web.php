@@ -18,6 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// PESERTA
+Route::get('/login', 'PesertaController@formLogin')->name('login-peserta');
+Route::post('/store-login', 'PesertaController@login')->name('store-login');
+Route::get('/register', 'PesertaController@register')->name('register');
+Route::post('/store-register', 'PesertaController@store')->name('store-register');
+
+// ADMIN
+route::group(['prefix' => 'admin'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -62,3 +70,4 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 });
 
+});

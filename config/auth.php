@@ -41,6 +41,12 @@ return [
             'provider' => 'users',
         ],
 
+        /* TAMBAHKAN CODE INI */
+        'peserta' => [
+            'driver' => 'session',
+            'provider' => 'pesertas',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -69,6 +75,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'pesertas' => [
+            'driver' => 'eloquent',
+            'model' => App\Peserta::class,
         ],
 
         // 'users' => [
