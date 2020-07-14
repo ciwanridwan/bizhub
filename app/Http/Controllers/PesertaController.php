@@ -6,23 +6,32 @@ use Illuminate\Http\Request;
 
 class PesertaController extends Controller
 {
+    public function logout()
+    {
+        auth()->guard('peserta')->logout(); //JADI KITA LOGOUT SESSION DARI GUARD PESERTA
+        return redirect(route('peserta.login'));
+    }
+
     public function storeRegister()
     {
-        
+
     }
     public function register()
     {
         return view('peserta.register');
     }
+
     public function formLogin()
     {
+        if (auth()->guard('peserta')->check()) return redirect(route('dashboard-peserta'));
         return view('peserta.login');
     }
+
     public function login(Request $request)
     {
         //VALIDASI DATA YANG DITERIMA
         $this->validate($request, [
-            'email' => 'required|email|exists:customers,email',
+            'email' => 'required|email|exists:pesertas,email',
             'password' => 'required|string'
         ]);
 
@@ -33,7 +42,7 @@ class PesertaController extends Controller
 
         //CHECK UNTUK PROSES OTENTIKASI
         //DARI GUARD PESERTA, KITA ATTEMPT PROSESNYA DARI DATA $AUTH
-        if (auth()->guard('customer')->attempt($auth)) {
+        if (auth()->guard('peserta')->attempt($auth)) {
             //JIKA BERHASIL MAKA AKAN DIREDIRECT KE DASHBOARD
             return redirect()->intended(route('home'));
         }
@@ -47,7 +56,7 @@ class PesertaController extends Controller
      */
     public function index()
     {
-        //
+        return view('peserta.dashboard');
     }
 
     /**

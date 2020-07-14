@@ -15,59 +15,64 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 // PESERTA
+Route::get('/register', 'PesertaController@register')->name('register-peserta');
 Route::get('/login', 'PesertaController@formLogin')->name('login-peserta');
 Route::post('/store-login', 'PesertaController@login')->name('store-login');
-Route::get('/register', 'PesertaController@register')->name('register');
 Route::post('/store-register', 'PesertaController@store')->name('store-register');
+Route::group(['middleware' => 'peserta'], function () {
+	Route::get('/dashboard', 'PesertaController@index')->name('dashboard-peserta');
+	Route::get('/edit', 'PesertaController@profileEdit')->name('edit-peserta');
+	Route::get('/logout-peserta', 'PesertaController@logout')->name('logout-peserta');
+});
+
 
 // ADMIN
 route::group(['prefix' => 'admin'], function () {
-Auth::routes();
+	Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Auth::routes();
+	Route::get('/home', 'HomeController@index')->name('home');
+	Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+	Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
-Route::group(['middleware' => 'auth'], function () {
-	Route::get('table-list', function () {
-		return view('pages.table_list');
-	})->name('table');
+	Route::group(['middleware' => 'auth'], function () {
+		Route::get('table-list', function () {
+			return view('pages.table_list');
+		})->name('table');
 
-	Route::get('typography', function () {
-		return view('pages.typography');
-	})->name('typography');
+		Route::get('typography', function () {
+			return view('pages.typography');
+		})->name('typography');
 
-	Route::get('icons', function () {
-		return view('pages.icons');
-	})->name('icons');
+		Route::get('icons', function () {
+			return view('pages.icons');
+		})->name('icons');
 
-	Route::get('map', function () {
-		return view('pages.map');
-	})->name('map');
+		Route::get('map', function () {
+			return view('pages.map');
+		})->name('map');
 
-	Route::get('notifications', function () {
-		return view('pages.notifications');
-	})->name('notifications');
+		Route::get('notifications', function () {
+			return view('pages.notifications');
+		})->name('notifications');
 
-	Route::get('rtl-support', function () {
-		return view('pages.language');
-	})->name('language');
+		Route::get('rtl-support', function () {
+			return view('pages.language');
+		})->name('language');
 
-	Route::get('upgrade', function () {
-		return view('pages.upgrade');
-	})->name('upgrade');
-});
+		Route::get('upgrade', function () {
+			return view('pages.upgrade');
+		})->name('upgrade');
+	});
 
-Route::group(['middleware' => 'auth'], function () {
-	Route::resource('user', 'UserController', ['except' => ['show']]);
-	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
-	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
-	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
-});
-
+	Route::group(['middleware' => 'auth'], function () {
+		Route::resource('user', 'UserController', ['except' => ['show']]);
+		Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+		Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
+		Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+	});
 });
