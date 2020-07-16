@@ -12,5 +12,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call('UsersTableSeeder');
+        $this->call('ProvinsiTableSeeder');
+        $this->call('KotaTableSeeder');
+        $this->call('KecamatanTableSeeder');
+        $this->call('KelurahanTableSeeder');
+        $this->call('KodeposTableSeeder');
     }
 }

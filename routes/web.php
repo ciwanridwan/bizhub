@@ -19,13 +19,24 @@ Route::get('/', function () {
 });
 
 // PESERTA
-Route::get('/register', 'PesertaController@register')->name('register-peserta');
+Route::get('/register', 'PesertaController@create')->name('register-peserta');
 Route::get('/login', 'PesertaController@formLogin')->name('login-peserta');
 Route::post('/store-login', 'PesertaController@login')->name('store-login');
 Route::post('/store-register', 'PesertaController@store')->name('store-register');
 Route::group(['middleware' => 'peserta'], function () {
 	Route::get('/dashboard', 'PesertaController@index')->name('dashboard-peserta');
-	Route::get('/edit', 'PesertaController@profileEdit')->name('edit-peserta');
+	Route::get('/pendaftaran', 'HalamanPendaftaranController@create')->name('pendaftaran-usaha');
+	Route::post('/store-profile-usaha', 'HalamanPendaftaranController@profileUsaha')->name('profile-usaha');
+	Route::post('/store-profile-akun', 'HalamanPendaftaranController@profileAkun')->name('profile-akun-daftar');
+	Route::get('/isi-laporan', 'MenuWirausahaController@isiLaporan')->name('isi-laporan');
+	Route::get('/profile', 'MenuWirausahaController@index')->name('profile-akun');
+	Route::get('/riwayat-laporan', 'MenuWirausahaController@index')->name('riwayat-laporan');
+	Route::get('/konsultasi', 'MenuWirausahaController@index')->name('konsultasi');
+	Route::get('/akses-modal', 'MenuWirausahaController@index')->name('akses-modal');
+	Route::get('/akses-pasar', 'MenuWirausahaController@index')->name('akses-ecommerce');
+	Route::get('/video-materi-berwirausaha', 'MenuWirausahaController@index')->name('video-berwirausaha');
+	// Route::get('/grafik', 'MenuWirausahaController@index')->name('grafik');
+	Route::get('/edit', 'PesertaController@edit')->name('edit-peserta');
 	Route::get('/logout-peserta', 'PesertaController@logout')->name('logout-peserta');
 });
 

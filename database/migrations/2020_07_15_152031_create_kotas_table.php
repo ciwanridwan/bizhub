@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePesertasTable extends Migration
+class CreateKotasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreatePesertasTable extends Migration
      */
     public function up()
     {
-        Schema::create('pesertas', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->string('email');
-            $table->string('password');
+        Schema::create('kotas', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('provinsi_id');
+            $table->string('name');
+            $table->string('type');
+            $table->string('postal_code');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreatePesertasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pesertas');
+        Schema::dropIfExists('kotas');
     }
 }

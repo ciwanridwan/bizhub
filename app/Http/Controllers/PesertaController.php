@@ -3,22 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Peserta;
+use Session;
 
 class PesertaController extends Controller
 {
     public function logout()
     {
         auth()->guard('peserta')->logout(); //JADI KITA LOGOUT SESSION DARI GUARD PESERTA
-        return redirect(route('peserta.login'));
-    }
-
-    public function storeRegister()
-    {
-
-    }
-    public function register()
-    {
-        return view('peserta.register');
+        return redirect(route('login-peserta'));
     }
 
     public function formLogin()
@@ -38,13 +31,13 @@ class PesertaController extends Controller
         //CUKUP MENGAMBIL EMAIL DAN PASSWORD SAJA DARI REQUEST
         //KARENA JUGA DISERTAKAN TOKEN
         $auth = $request->only('email', 'password');
-        $auth['status'] = 1; //TAMBAHKAN JUGA STATUS YANG BISA LOGIN HARUS 1
 
         //CHECK UNTUK PROSES OTENTIKASI
         //DARI GUARD PESERTA, KITA ATTEMPT PROSESNYA DARI DATA $AUTH
         if (auth()->guard('peserta')->attempt($auth)) {
             //JIKA BERHASIL MAKA AKAN DIREDIRECT KE DASHBOARD
-            return redirect()->intended(route('home'));
+            // return redirect()->intended(route('dashboard-peserta'));
+            return redirect('/dashboard');
         }
         //JIKA GAGAL MAKA REDIRECT KEMBALI BERSERTA NOTIFIKASI
         return redirect()->back()->with(['error' => 'Email / Password Yang Anda Masukkan Salah']);
@@ -66,7 +59,7 @@ class PesertaController extends Controller
      */
     public function create()
     {
-        //
+        return view('peserta.register');
     }
 
     /**
@@ -77,7 +70,29 @@ class PesertaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (
+            !$request->nama || !$request->email || !$request->password
+        ) {
+            Session::put('error', 'All field is required');
+        }
+        $this->validate($request,
+        [
+            'nama' => 'required|string|max:255',
+            'email' => 'required|email',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        if (!auth()->guard('peserta')->check()) {
+            $peserta = Peserta::create([
+                'nama' => $request->nama,
+                'email' => $request->email,
+                'password' => $request->password,
+            ]);
+        }
+        Session::put('message', 'New profile has been created');
+        
+        return redirect('/register');
+        dd($peserta);
     }
 
     /**
@@ -97,9 +112,9 @@ class PesertaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        return view('peserta.profile.edit');
     }
 
     /**

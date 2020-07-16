@@ -47,7 +47,6 @@
             <p>{{ __('Table List') }}</p>
         </a>
       </li>
-      
       <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('notifications') }}">
           <i class="material-icons">notifications</i>
