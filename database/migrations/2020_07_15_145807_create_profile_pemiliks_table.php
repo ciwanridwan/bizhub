@@ -16,8 +16,7 @@ class CreateProfilePemiliksTable extends Migration
         Schema::create('profile_pemiliks', function (Blueprint $table) {
             $table->id();
             $table->string('nama_lengkap');
-            $table->string('jalan');
-            $table->string('kelurahan');
+            $table->string('alamat');
             $table->string('kecamatan');
             $table->string('kota');
             $table->string('provinsi');

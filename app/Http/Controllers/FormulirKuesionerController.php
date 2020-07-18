@@ -6,14 +6,18 @@ use Illuminate\Http\Request;
 
 class FormulirKuesionerController extends Controller
 {
+    public function profilePemilik()
+    {
+        return view('admin.formulir.profile-pemilik');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function profileUsaha()
     {
-        //
+        return view('admin.formulir.profile-usaha');
     }
 
     /**
@@ -21,9 +25,9 @@ class FormulirKuesionerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createKuesioner()
     {
-        //
+        return view('admin.formulir.kuesioner');
     }
 
     /**

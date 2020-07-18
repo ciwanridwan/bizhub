@@ -30,7 +30,13 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('pendaftaran-usaha')}}">
                                 <i class="material-icons">group</i>
-                                <p>Usaha dan Pemilik</p>
+                                <p>Profile Usaha</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('pendaftaran-profile')}}">
+                                <i class="material-icons">group</i>
+                                <p>Profile Akun</p>
                             </a>
                         </li>
                         <li class="nav-item">

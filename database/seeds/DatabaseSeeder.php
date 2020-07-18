@@ -17,5 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call('KecamatanTableSeeder');
         $this->call('KelurahanTableSeeder');
         $this->call('KodeposTableSeeder');
+        $this->call('KontakTableSeeder');
+        $this->call('MitraTableSeeder');
+        $this->call('SliderTableSeeder');
     }
 }

@@ -18,8 +18,7 @@ class CreateProfileUsahasTable extends Migration
             $table->string('nama_usaha');
             $table->string('badan_usaha');
             $table->string('jenis_usaha');
-            $table->string('jalan');
-            $table->string('kelurahan');
+            $table->string('alamat');
             $table->string('kecamatan');
             $table->string('kota');
             $table->string('provinsi');

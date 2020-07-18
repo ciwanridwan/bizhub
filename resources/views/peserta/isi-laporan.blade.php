@@ -1,4 +1,4 @@
-@extends('layouts.user', ['activePage' => 'profile', 'titlePage' => __('Isi Laporan')])
+@extends('layouts.user', ['activePage' => '', 'titlePage' => __('Isi Laporan')])
 
 @section('content')
 <div class="content">
@@ -12,7 +12,7 @@
 
                     <div class="card ">
                         <div class="card-header card-header-primary">
-                            <h3 class="card-title">{{ __('Isi Laporan Sebagai Syarat Verifikasi') }}</h3>
+                            <h3 class="card-title">{{ __('Isi Kuesioner Sebagai Syarat Verifikasi') }}</h3>
                         </div>
                         <div class="card-body ">
                             @if (session('message'))
@@ -30,13 +30,30 @@
                             <div class="row">
                                 <label class="col-sm-2 col-form-label">{{ __('Jenis Usaha') }}</label>
                                 <div class="col-sm-7">
-                                    <div class="form-group{{ $errors->has('nama_usaha') ? ' has-danger' : '' }}">
-                                        <input class="form-control" name="nama_usaha" id="input-name" type="text"
-                                            placeholder="{{ __('') }}" value="" required="true"
-                                            aria-required="true" />
-                                        @if ($errors->has('nama_usaha'))
+                                    <div class="form-group{{ $errors->has('jenis_usaha') ? ' has-danger' : '' }}">
+                                        <div class="form-check form-check-radio">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="jenis_usaha"
+                                                    id="exampleRadios1" value="">
+                                                Barang
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-radio">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="jenis_usaha"
+                                                    id="exampleRadios1" value="">
+                                                Jasa
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        @if ($errors->has('jenis_usaha'))
                                         <span id="name-error" class="error text-danger"
-                                            for="input-name">{{ $errors->first('nama_usaha') }}</span>
+                                            for="input-name">{{ $errors->first('jenis_usaha') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -46,9 +63,36 @@
                                 <label class="col-sm-2 col-form-label">{{ __('Bidang Usaha') }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('badan_usaha') ? ' has-danger' : '' }}">
-                                        <input class="form-control" name="badan_usaha" id="input-name" type="text"
-                                            placeholder="{{ __('') }}" value="" required="true"
-                                            aria-required="true" />
+                                        <div class="form-check form-check-radio">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="badan_usaha"
+                                                    id="exampleRadios1" value="">
+                                                Produksi
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-radio">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="badan_usaha"
+                                                    id="exampleRadios1" value="">
+                                                Distribusi
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-radio">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="badan_usaha"
+                                                    id="exampleRadios1" value="">
+                                                Pemasaran
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
                                         @if ($errors->has('badan_usaha'))
                                         <span id="name-error" class="error text-danger"
                                             for="input-name">{{ $errors->first('badan_usaha') }}</span>
@@ -60,13 +104,40 @@
                             <div class="row">
                                 <label class="col-sm-2 col-form-label">{{ __('Skala Usaha') }}</label>
                                 <div class="col-sm-7">
-                                    <div class="form-group{{ $errors->has('jenis_usaha') ? ' has-danger' : '' }}">
-                                        <input class="form-control" name="jenis_usaha" id="input-name" type="text"
-                                            placeholder="{{ __('') }}" value="" required="true"
-                                            aria-required="true" />
-                                        @if ($errors->has('jenis_usaha'))
+                                    <div class="form-group{{ $errors->has('skala_usaha') ? ' has-danger' : '' }}">
+                                            <div class="form-check form-check-radio">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="radio" name="skala_usaha"
+                                                        id="exampleRadios1" value="">
+                                                    Kecil
+                                                    <span class="circle">
+                                                        <span class="check"></span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        <div class="form-check form-check-radio">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="skala_usaha"
+                                                    id="exampleRadios1" value="">
+                                                Menengah
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-radio">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="skala_usaha"
+                                                    id="exampleRadios1" value="">
+                                                Besar
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        @if ($errors->has('skala_usaha'))
                                         <span id="name-error" class="error text-danger"
-                                            for="input-name">{{ $errors->first('jenis_usaha') }}</span>
+                                            for="input-name">{{ $errors->first('skala_usaha') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -75,13 +146,59 @@
                             <div class="row">
                                 <label class="col-sm-2 col-form-label">{{ __('Sudah ada PT atau belum') }}</label>
                                 <div class="col-sm-7">
-                                    <div class="form-group{{ $errors->has('nama_usaha') ? ' has-danger' : '' }}">
-                                        <input class="form-control" name="nama_usaha" id="input-name" type="text"
-                                            placeholder="{{ __('') }}" value="" required="true"
-                                            aria-required="true" />
-                                        @if ($errors->has('nama_usaha'))
+                                    <div class="form-group{{ $errors->has('existing_pt') ? ' has-danger' : '' }}">
+                                        <div class="form-check form-check-radio">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input hide-collapse" type="radio" name="skala_usaha"
+                                                    id="exampleRadios1" value="">
+                                                Belum
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-radio">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input collapsed" type="radio"
+                                                    name="skala_usaha" id="exampleRadios1" value="">
+                                                Sudah
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                            <div class="collapse-test">
+                                                <div class="form-group{{ $errors->has('nama_pt') ? ' has-danger' : '' }}">
+                                                    <input class="form-control" name="nama_pt" id="input-name"
+                                                        type="text" placeholder="{{ __('Nama PT') }}" value=""
+                                                        required="true" aria-required="true" />
+                                                    @if ($errors->has('nama_pt'))
+                                                    <span id="name-error" class="error text-danger"
+                                                        for="input-name">{{ $errors->first('nama_pt') }}</span>
+                                                    @endif
+                                                </div>
+                                                <div class="form-group{{ $errors->has('npwp') ? ' has-danger' : '' }}">
+                                                    <input class="form-control" name="npwp" id="input-name"
+                                                        type="text" placeholder="{{ __('NPWP') }}" value=""
+                                                        required="true" aria-required="true" />
+                                                    @if ($errors->has('npwp'))
+                                                    <span id="name-error" class="error text-danger"
+                                                        for="input-name">{{ $errors->first('npwp') }}</span>
+                                                    @endif
+                                                </div>
+                                                <div class="form-group{{ $errors->has('tanggal_berdiri') ? ' has-danger' : '' }}">
+                                                    <input class="form-control" name="tanggal_berdiri" id="input-name"
+                                                        type="text" placeholder="{{ __('Nama PT') }}" value=""
+                                                        required="true" aria-required="true" />
+                                                    @if ($errors->has('tanggal_berdiri'))
+                                                    <span id="name-error" class="error text-danger"
+                                                        for="input-name">{{ $errors->first('tanggal_berdiri') }}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @if ($errors->has('existing_pt'))
                                         <span id="name-error" class="error text-danger"
-                                            for="input-name">{{ $errors->first('nama_usaha') }}</span>
+                                            for="input-name">{{ $errors->first('existing_pt') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -90,12 +207,12 @@
                             <div class="row">
                                 <label class="col-sm-2 col-form-label">{{ __('Omset Perbulan') }}</label>
                                 <div class="col-sm-7">
-                                    <div class="form-group{{ $errors->has('kelurahan') ? ' has-danger' : '' }}">
-                                        <input class="form-control" name="kelurahan" id="input-name" type="text" placeholder="{{ __('') }}"
-                                        value="" required="true" aria-required="true"/>
-                                        @if ($errors->has('kelurahan'))
+                                    <div class="form-group{{ $errors->has('omset_perbulan') ? ' has-danger' : '' }}">
+                                        <input class="form-control" name="omset_perbulan" id="input-name" type="text"
+                                            placeholder="{{ __('') }}" value="" required="true" aria-required="true" />
+                                        @if ($errors->has('omset_perbulan'))
                                         <span id="name-error" class="error text-danger"
-                                            for="input-name">{{ $errors->first('kelurahan') }}</span>
+                                            for="input-name">{{ $errors->first('omset_perbulan') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -104,12 +221,12 @@
                             <div class="row">
                                 <label class="col-sm-2 col-form-label">{{ __('Modal Awal') }}</label>
                                 <div class="col-sm-7">
-                                    <div class="form-group{{ $errors->has('kelurahan') ? ' has-danger' : '' }}">
-                                        <input class="form-control" name="kelurahan" id="input-name" type="text" placeholder="{{ __('') }}"
-                                        value="" required="true" aria-required="true"/>
-                                        @if ($errors->has('kelurahan'))
+                                    <div class="form-group{{ $errors->has('modal_awal') ? ' has-danger' : '' }}">
+                                        <input class="form-control" name="modal_awal" id="input-name" type="text"
+                                            placeholder="{{ __('') }}" value="" required="true" aria-required="true" />
+                                        @if ($errors->has('modal_awal'))
                                         <span id="name-error" class="error text-danger"
-                                            for="input-name">{{ $errors->first('kelurahan') }}</span>
+                                            for="input-name">{{ $errors->first('modal_awal') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -118,12 +235,12 @@
                             <div class="row">
                                 <label class="col-sm-2 col-form-label">{{ __('Jumlah Kas Saat ini') }}</label>
                                 <div class="col-sm-7">
-                                    <div class="form-group{{ $errors->has('kelurahan') ? ' has-danger' : '' }}">
-                                        <input class="form-control" name="kelurahan" id="input-name" type="text" placeholder="{{ __('') }}"
-                                        value="" required="true" aria-required="true"/>
-                                        @if ($errors->has('kelurahan'))
+                                    <div class="form-group{{ $errors->has('jumlah_kas') ? ' has-danger' : '' }}">
+                                        <input class="form-control" name="jumlah_kas" id="input-name" type="text"
+                                            placeholder="{{ __('') }}" value="" required="true" aria-required="true" />
+                                        @if ($errors->has('jumlah_kas'))
                                         <span id="name-error" class="error text-danger"
-                                            for="input-name">{{ $errors->first('kelurahan') }}</span>
+                                            for="input-name">{{ $errors->first('jumlah_kas') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -132,12 +249,12 @@
                             <div class="row">
                                 <label class="col-sm-2 col-form-label">{{ __('Jumlah Karyawan Tetap') }}</label>
                                 <div class="col-sm-7">
-                                    <div class="form-group{{ $errors->has('kelurahan') ? ' has-danger' : '' }}">  
-                                        <input class="form-control" name="kelurahan" id="input-name" type="text" placeholder="{{ __('') }}"
-                                        value="" required="true" aria-required="true"/>
-                                        @if ($errors->has('kelurahan'))
+                                    <div class="form-group{{ $errors->has('jumlah_karyawan_tetap') ? ' has-danger' : '' }}">
+                                        <input class="form-control" name="jumlah_karyawan_tetap" id="input-name" type="text"
+                                            placeholder="{{ __('') }}" value="" required="true" aria-required="true" />
+                                        @if ($errors->has('jumlah_karyawan_tetap'))
                                         <span id="name-error" class="error text-danger"
-                                            for="input-name">{{ $errors->first('kelurahan') }}</span>
+                                            for="input-name">{{ $errors->first('jumlah_karyawan_tetap') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -146,13 +263,12 @@
                             <div class="row">
                                 <label class="col-sm-2 col-form-label">{{ __('Jumlah Karyawan Lengkap') }}</label>
                                 <div class="col-sm-7">
-                                    <div class="form-group{{ $errors->has('kelurahan') ? ' has-danger' : '' }}">
-                                        <input class="form-control" name="kelurahan" id="input-name" type="text"
-                                            placeholder="{{ __('') }}" value="" required="true"
-                                            aria-required="true" />
-                                        @if ($errors->has('kelurahan'))
+                                    <div class="form-group{{ $errors->has('jumlah_karyawan_lengkap') ? ' has-danger' : '' }}">
+                                        <input class="form-control" name="jumlah_karyawan_lengkap" id="input-name" type="text"
+                                            placeholder="{{ __('') }}" value="" required="true" aria-required="true" />
+                                        @if ($errors->has('jumlah_karyawan_lengkap'))
                                         <span id="name-error" class="error text-danger"
-                                            for="input-name">{{ $errors->first('kelurahan') }}</span>
+                                            for="input-name">{{ $errors->first('jumlah_karyawan_lengkap') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -162,13 +278,26 @@
                             <div class="row">
                                 <label class="col-sm-2 col-form-label">{{ __('Kondisi Terkini Usaha') }}</label>
                                 <div class="col-sm-7">
-                                    <div class="form-group{{ $errors->has('nomor_kontak') ? ' has-danger' : '' }}">
-                                        <input class="form-control" name="nomor_kontak" id="input-name" type="text"
-                                            placeholder="{{ __('') }}" value="" required="true"
-                                            aria-required="true" />
-                                        @if ($errors->has('nomor_kontak'))
+                                    <div class="form-group{{ $errors->has('kondisi_usaha') ? ' has-danger' : '' }}">
+                                        <div class="form-check form-check-radio form-check-inline">
+                                            <label class="form-check-label">
+                                              <input class="form-check-input" type="radio" name="kondisi_usaha" id="inlineRadio1" value="option1"> Bagus
+                                              <span class="circle">
+                                                  <span class="check"></span>
+                                              </span>
+                                            </label>
+                                          </div>
+                                          <div class="form-check form-check-radio form-check-inline">
+                                            <label class="form-check-label">
+                                              <input class="form-check-input" type="radio" name="kondisi_usaha" id="inlineRadio1" value="option1"> Kurang Bagus
+                                              <span class="circle">
+                                                  <span class="check"></span>
+                                              </span>
+                                            </label>
+                                          </div>
+                                        @if ($errors->has('kondisi_usaha'))
                                         <span id="name-error" class="error text-danger"
-                                            for="input-name">{{ $errors->first('nomor_kontak') }}</span>
+                                            for="input-name">{{ $errors->first('kondisi_usaha') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -178,12 +307,11 @@
                                 <label
                                     class="col-sm-2 col-form-label">{{ __('Jelaskan Kondisi Mengapa Usaha Anda Bagus/Kurang Bagus ?') }}</label>
                                 <div class="col-sm-7">
-                                    <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                        <input class="form-control" name="email" id="input-email" type="email"
-                                            placeholder="{{ __('') }}" value="" required />
-                                        @if ($errors->has('email'))
+                                    <div class="form-group{{ $errors->has('penjelasan_kondisi') ? ' has-danger' : '' }}">
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        @if ($errors->has('penjelasan_kondisi'))
                                         <span id="email-error" class="error text-danger"
-                                            for="input-email">{{ $errors->first('email') }}</span>
+                                            for="input-email">{{ $errors->first('penjelasan_kondisi') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -192,13 +320,50 @@
                             <div class="row">
                                 <label class="col-sm-2 col-form-label">{{ __('Jangkauan Area Pelanggan') }}</label>
                                 <div class="col-sm-7">
-                                    <div class="form-group{{ $errors->has('tahun_berdiri') ? ' has-danger' : '' }}">
-                                        <input class="form-control" name="tahun_berdiri" id="input-name" type="text"
-                                            placeholder="{{ __('') }}" value="" required="true"
-                                            aria-required="true" />
-                                        @if ($errors->has('tahun_berdiri'))
+                                    <div class="form-group{{ $errors->has('jangkauan_area') ? ' has-danger' : '' }}">
+                                        <div class="form-check form-check-radio form-check-inline">
+                                            <label class="form-check-label">
+                                              <input class="form-check-input" type="radio" name="kondisi_usaha" id="inlineRadio1" value="option1"> International
+                                              <span class="circle">
+                                                  <span class="check"></span>
+                                              </span>
+                                            </label>
+                                          </div>
+                                          <div class="form-check form-check-radio form-check-inline">
+                                            <label class="form-check-label">
+                                              <input class="form-check-input" type="radio" name="kondisi_usaha" id="inlineRadio1" value="option1"> Nasional
+                                              <span class="circle">
+                                                  <span class="check"></span>
+                                              </span>
+                                            </label>
+                                          </div>
+                                          <div class="form-check form-check-radio form-check-inline">
+                                            <label class="form-check-label">
+                                              <input class="form-check-input" type="radio" name="kondisi_usaha" id="inlineRadio1" value="option1"> Provinsi
+                                              <span class="circle">
+                                                  <span class="check"></span>
+                                              </span>
+                                            </label>
+                                          </div>
+                                          <div class="form-check form-check-radio form-check-inline">
+                                            <label class="form-check-label">
+                                              <input class="form-check-input" type="radio" name="kondisi_usaha" id="inlineRadio1" value="option1"> Kabupaten
+                                              <span class="circle">
+                                                  <span class="check"></span>
+                                              </span>
+                                            </label>
+                                          </div>
+                                          <div class="form-check form-check-radio form-check-inline">
+                                            <label class="form-check-label">
+                                              <input class="form-check-input" type="radio" name="kondisi_usaha" id="inlineRadio1" value="option1"> Kota
+                                              <span class="circle">
+                                                  <span class="check"></span>
+                                              </span>
+                                            </label>
+                                          </div>
+                                        @if ($errors->has('jangkauan_area'))
                                         <span id="name-error" class="error text-danger"
-                                            for="input-name">{{ $errors->first('tahun_berdiri') }}</span>
+                                            for="input-name">{{ $errors->first('jangkauan_area') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -214,4 +379,17 @@
 
     </div>
 </div>
+@endsection
+
+@section('collapsed-js')
+<script>
+    $(document).ready(function(){
+      $(".collapsed").click(function(){
+        $(".collapse-test").collapse('toggle');
+      });
+      $(".hide-collapse").click(function(){
+    $(".collapse").collapse('hide');
+        });
+    });
+</script>
 @endsection

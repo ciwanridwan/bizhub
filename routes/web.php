@@ -19,6 +19,9 @@ Route::get('/', function () {
 });
 
 // PESERTA
+
+Route::get('/api/kota/', 'HalamanPendaftaranController@getKota');
+Route::get('/api/kecamatan/', 'HalamanPendaftaranController@getKecamatan');
 Route::get('/register', 'PesertaController@create')->name('register-peserta');
 Route::get('/login', 'PesertaController@formLogin')->name('login-peserta');
 Route::post('/store-login', 'PesertaController@login')->name('store-login');
@@ -26,9 +29,10 @@ Route::post('/store-register', 'PesertaController@store')->name('store-register'
 Route::group(['middleware' => 'peserta'], function () {
 	Route::get('/dashboard', 'PesertaController@index')->name('dashboard-peserta');
 	Route::get('/pendaftaran', 'HalamanPendaftaranController@create')->name('pendaftaran-usaha');
+	Route::get('/pendaftaran-profile', 'HalamanPendaftaranController@index')->name('pendaftaran-profile');
 	Route::post('/store-profile-usaha', 'HalamanPendaftaranController@profileUsaha')->name('profile-usaha');
 	Route::post('/store-profile-akun', 'HalamanPendaftaranController@profileAkun')->name('profile-akun-daftar');
-	Route::get('/isi-laporan', 'MenuWirausahaController@isiLaporan')->name('isi-laporan');
+	Route::get('/isi-kuesioner', 'MenuWirausahaController@isiLaporan')->name('isi-laporan');
 	Route::get('/profile', 'MenuWirausahaController@index')->name('profile-akun');
 	Route::get('/riwayat-laporan', 'MenuWirausahaController@index')->name('riwayat-laporan');
 	Route::get('/konsultasi', 'MenuWirausahaController@index')->name('konsultasi');
@@ -78,6 +82,30 @@ route::group(['prefix' => 'admin'], function () {
 		Route::get('upgrade', function () {
 			return view('pages.upgrade');
 		})->name('upgrade');
+
+		Route::get('/kontak-kami', 'AdminController@kontakKami')->name('kontak-kami');
+		Route::get('/kontak/edit/{id}', 'AdminController@editKontak')->name('edit-kontak');
+		Route::post('/update-kontak', 'AdminController@updateKontak')->name('update-kontak');
+
+		Route::get('/slider', 'AdminController@slider')->name('slider');
+		Route::get('/slider/edit/{id}', 'AdminController@editSlider')->name('edit-slider');
+		Route::post('/update-slider', 'AdminController@updateSlider')->name('update-slider');
+
+		Route::get('/mitra-kami', 'AdminController@mitraKami')->name('mitra-kami');
+		Route::get('/mitra/edit/{id}', 'AdminController@editMitra')->name('edit-mitra');
+		Route::post('/update-mitra', 'AdminController@updateMitra')->name('update-mitra');
+
+		Route::group(['prefix' => 'formulir'], function () {
+			Route::get('/profile-usaha', 'FormulirKuesionerController@profileUsaha')->name('formulir-profile-usaha');
+			Route::get('/profile-pemilik', 'FormulirKuesionerController@profilePemilik')->name('formulir-profile-pemilik');
+			Route::get('/kuesioner', 'FormulirKuesionerController@createKuesioner')->name('kuesioner');
+		});
+
+		Route::group(['prefix' => 'wirausaha'], function (){
+			Route::get('/terverifikasi', 'AdminController@wirausahaTerverifikasi')->name('terverifikasi');
+			Route::get('/belum-tervirifikasi', 'AdminController@wirausahaBelumTerverifikasi')->name('belum-terverifikasi');
+			Route::get('/berdasarkan-skala', 'AdminController@wirausahaBerdasarkanSkala')->name('skala');
+		});
 	});
 
 	Route::group(['middleware' => 'auth'], function () {

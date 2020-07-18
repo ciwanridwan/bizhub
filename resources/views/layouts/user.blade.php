@@ -19,6 +19,8 @@
     <link href="http://bizhub.com/material/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="http://bizhub.com/material/demo/demo.css" rel="stylesheet" />
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
 </head>
 
 <body class="">
@@ -266,6 +268,8 @@
       md.initDashboardPageCharts();
     });
     </script>
+    @yield('dropdown')
+    @yield('collapsed-js')
 </body>
 
 </html>
