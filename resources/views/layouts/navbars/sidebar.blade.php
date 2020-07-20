@@ -22,28 +22,28 @@
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
           <i class="material-icons">content_paste</i>
-          <p>{{ __('Pendaftaran') }}
+          <p>{{ __('Formulir') }}
             <b class="caret"></b>
           </p>
         </a>
         <div class="collapse show" id="laravelExample">
           <ul class="nav">
             <li class="nav-item{{ $activePage == 'profile-pemilik' ? ' active' : '' }}">
-              <a class="nav-link" href="{{route('formulir-profile-pemilik')}}">
+              <a class="nav-link" href="#">
                 {{-- <a class="nav-link" href="{{ route('user.index') }}"> --}}
                 <i class="material-icons">account_box</i>
                 <p>{{ __('Profile Pemilik') }}</p>
               </a>
             </li>
             <li class="nav-item{{ $activePage == 'profileUsaha' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('formulir-profile-usaha') }}">
+              <a class="nav-link" href="#">
                 <i class="material-icons">how_to_vote</i>
                 <p>{{ __('Profile Usaha') }}</p>
               </a>
             </li>
 
             <li class="nav-item{{ $activePage == 'kuesioner' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('kuesioner') }}">
+              <a class="nav-link" href="#">
                 <i class="material-icons">comment_bank</i>
                 <p>{{ __('Kuesioner') }}</p>
               </a>
