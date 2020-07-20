@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-	return view('welcome');
+	return view('home-page');
 });
 
 // PESERTA
@@ -33,13 +33,15 @@ Route::group(['middleware' => 'peserta'], function () {
 	Route::post('/store-profile-usaha', 'HalamanPendaftaranController@profileUsaha')->name('profile-usaha');
 	Route::post('/store-profile-akun', 'HalamanPendaftaranController@profileAkun')->name('profile-akun-daftar');
 	Route::get('/isi-kuesioner', 'MenuWirausahaController@isiLaporan')->name('isi-laporan');
+	Route::post('/store-kuesioner', 'MenuWirausahaController@storeKuesioner')->name('store-kuesioner');
 	Route::get('/profile', 'MenuWirausahaController@index')->name('profile-akun');
-	Route::get('/riwayat-laporan', 'MenuWirausahaController@index')->name('riwayat-laporan');
-	Route::get('/konsultasi', 'MenuWirausahaController@index')->name('konsultasi');
-	Route::get('/akses-modal', 'MenuWirausahaController@index')->name('akses-modal');
-	Route::get('/akses-pasar', 'MenuWirausahaController@index')->name('akses-ecommerce');
-	Route::get('/video-materi-berwirausaha', 'MenuWirausahaController@index')->name('video-berwirausaha');
+	Route::get('/riwayat-laporan', 'MenuWirausahaController@riwayatLaporan')->name('riwayat-laporan');
+	Route::get('/konsultasi', 'MenuWirausahaController@konsultasi')->name('konsultasi');
+	Route::get('/akses-modal', 'MenuWirausahaController@aksesModal')->name('akses-modal');
+	Route::get('/akses-pasar', 'MenuWirausahaController@aksesPasar')->name('akses-ecommerce');
+	Route::get('/video-materi-berwirausaha', 'MenuWirausahaController@videoWirausaha')->name('video-berwirausaha');
 	// Route::get('/grafik', 'MenuWirausahaController@index')->name('grafik');
+	Route::post('/update-profile', 'PesertaController@update')->name('update-profile');
 	Route::get('/edit', 'PesertaController@edit')->name('edit-peserta');
 	Route::get('/logout-peserta', 'PesertaController@logout')->name('logout-peserta');
 });
@@ -94,6 +96,7 @@ route::group(['prefix' => 'admin'], function () {
 		Route::get('/mitra-kami', 'AdminController@mitraKami')->name('mitra-kami');
 		Route::get('/mitra/edit/{id}', 'AdminController@editMitra')->name('edit-mitra');
 		Route::post('/update-mitra', 'AdminController@updateMitra')->name('update-mitra');
+		Route::get('/kuesioner/export-excell', 'KuesionerController@exportExcell')->name('export-excell');
 
 		Route::group(['prefix' => 'formulir'], function () {
 			Route::get('/profile-usaha', 'FormulirKuesionerController@profileUsaha')->name('formulir-profile-usaha');
@@ -104,6 +107,7 @@ route::group(['prefix' => 'admin'], function () {
 		Route::group(['prefix' => 'wirausaha'], function (){
 			Route::get('/terverifikasi', 'AdminController@wirausahaTerverifikasi')->name('terverifikasi');
 			Route::get('/belum-tervirifikasi', 'AdminController@wirausahaBelumTerverifikasi')->name('belum-terverifikasi');
+			Route::post('/update-verifikasi/{id}', 'AdminController@updateVerifikasi')->name('update-verifikasi');
 			Route::get('/berdasarkan-skala', 'AdminController@wirausahaBerdasarkanSkala')->name('skala');
 		});
 	});

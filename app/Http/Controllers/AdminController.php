@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Slider;
 use App\Kontak;
+use App\Kuesioner;
 use App\Mitra;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -11,18 +13,65 @@ class AdminController extends Controller
 {
     public function wirausahaBerdasarkanSkala()
     {
-        return view('admin.wirausaha-skala');
+        Session::put('skala', '');
+        $data = Kuesioner::all();
+        if (request()->skala_usaha != '') {
+            $data = $data->where('skala_usaha', request()->skala_usaha);
+        }
+        if (request()->jenis_usaha != '') {
+            $data = $data->where('jenis_usaha', request()->jenis_usaha);
+        }
+        if (request()->bidang_usaha != '') {
+            $data = $data->where('bidang_usaha', request()->bidang_usaha);
+        }
+
+        return view('admin.wirausaha.berdasarkan-skala')->with('data', $data);
     }
     public function wirausahaBelumTerverifikasi()
     {
-        return view('admin.wirausaha-belum-verifikasi');
+        $data = Kuesioner::where('status', 0)->get();
+        $omset = Kuesioner::where('omset_perbulan', '>=', 1)->get();
+        // dd($omset);
+        if (request()->omset_perbulan != '') {
+            $data = $data->where('omset_perbulan', request()->omset_perbulan);
+        }
+        foreach ($omset as $income) {
+
+            if ($income->omset_perbulan < 15) {
+                $little = 'kecil';
+            }
+            if ($income->omset_perbulan > 15) {
+                $middle = 'menengah';
+            }
+        }
+        return view('admin.wirausaha.belum-verifikasi', compact('middle', 'data', 'little', 'omset'));
+    }
+
+    public function updateVerifikasi($id)
+    {
+        $data = Kuesioner::find($id);
+        $data->status = 1;
+        $data->update();
+        return redirect('/admin/wirausaha/terverifikasi');
     }
     public function wirausahaTerverifikasi()
     {
-        return view('admin.wirausaha-terverifikasi');
+        Session::put('terverifikasi', '');
+        $data = Kuesioner::where('status', 1)->get();
+        if (request()->provinsi != '') {
+            $data = $data->where('provinsi', request()->provinsi);
+        }
+        if (request()->kota != '') {
+            $data = $data->where('kota', request()->kota);
+        }
+        if (request()->kecamatan != '') {
+            $data = $data->where('kecamatan', request()->kecamatan);
+        }
+        return view('admin.wirausaha.terverifikasi')->with('data', $data);
     }
     public function slider()
     {
+        Session::put('slider', '');
         $slider = Slider::all();
         return view('admin.slider')->with('slider', $slider);
     }
@@ -48,11 +97,11 @@ class AdminController extends Controller
 
     public function formSlider()
     {
-
     }
 
     public function kontakKami()
     {
+        Session::put('kontak', '');
         $kontak = Kontak::all();
         return view('admin.kontak')->with('kontak', $kontak);
     }
@@ -71,14 +120,12 @@ class AdminController extends Controller
 
     public function formKontak()
     {
-        
     }
 
     public function editKontak($id)
     {
         $kontak = Kontak::find($id);
         return view('admin.edit.kontak')->with('kontak', $kontak);
-
     }
 
     public function editMitra($id)
@@ -93,6 +140,7 @@ class AdminController extends Controller
      */
     public function mitraKami()
     {
+        Session::put('mitra', '');
         $mitra = Mitra::all();
         return view('admin.mitra')->with('mitra', $mitra);
     }
@@ -107,7 +155,7 @@ class AdminController extends Controller
             'email' => $request->badan_usaha
         ]);
 
-        return redirect('/admin/mitra-kami');   
+        return redirect('/admin/mitra-kami');
     }
 
     /**

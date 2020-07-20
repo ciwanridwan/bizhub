@@ -13602,7 +13602,7 @@ fieldset[disabled] .form-group .form-control {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   padding: 0 15px;
   width: 100%;
   max-width: 880px;
@@ -13655,7 +13655,7 @@ fieldset[disabled] .form-group .form-control {
 }
 
 .page-header:before {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 html * {

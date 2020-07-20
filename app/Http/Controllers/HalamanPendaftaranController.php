@@ -123,6 +123,7 @@ class HalamanPendaftaranController extends Controller
      */
     public function index()
     {
+        Session::put('profile-pemilik', '');
         $provinsi = Provinsi::orderBy('created_at', 'DESC')->get();
         return view('pendaftaran.profile-pemilik')->with('provinsi', $provinsi);
     }
@@ -134,6 +135,7 @@ class HalamanPendaftaranController extends Controller
      */
     public function create()
     {
+        Session::put('profile-usaha', '');
         $provinsi = Provinsi::orderBy('created_at', 'DESC')->get();
         return view('pendaftaran.profile-usaha')->with('provinsi', $provinsi);
     }

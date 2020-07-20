@@ -1,6 +1,7 @@
-@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('Material Dashboard')])
+@extends('layouts.new-app')
 
 @section('content')
+
 <div class="container" style="height: auto;">
   <div class="row align-items-center">
     <div class="col-md-9 ml-auto mr-auto mb-3 text-center">
@@ -14,13 +15,13 @@
           <div class="card-header card-header-primary text-center">
             <h4 class="card-title"><strong>{{ __('Login') }}</strong></h4>
             <div class="social-line">
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+              <a href="https://www.facebook.com/" class="btn btn-just-icon btn-link btn-white">
                 <i class="fa fa-facebook-square"></i>
               </a>
               <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                <i class="fa fa-twitter"></i>
+                <i class="https://twitter.com/login"></i>
               </a>
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+              <a href="https://gmail.com" class="btn btn-just-icon btn-link btn-white">
                 <i class="fa fa-google-plus"></i>
               </a>
             </div>
@@ -35,14 +36,11 @@
             @endif
 
             <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-              <div class="input-group">
+              <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons">email</i>
-                  </span>
+                  <span class="input-group-text" id="basic-addon1">@</span>
                 </div>
-                <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}"
-                  required>
+                <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" required>
               </div>
               @if ($errors->has('email'))
               <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
@@ -51,15 +49,12 @@
               @endif
             </div>
             <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
-              <div class="input-group">
+              <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons">lock_outline</i>
-                  </span>
+                  <i class="fa fa-lock input-group-text" style="font-size:24px"></i>
                 </div>
                 <input type="password" name="password" id="password" class="form-control"
-                  placeholder="{{ __('Password...') }}"
-                  required>
+                  placeholder="{{ __('Password...') }}" required>
               </div>
               @if ($errors->has('password'))
               <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
@@ -78,25 +73,11 @@
             </div>
           </div>
           <div class="card-footer justify-content-center">
-            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Lets Go') }}</button>
+            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Login') }}</button>
           </div>
         </div>
       </form>
-      <div class="row">
-        <div class="col-6">
-          @if (Route::has('password.request'))
-          <a href="{{ route('password.request') }}" class="text-light">
-            <small>{{ __('Forgot password?') }}</small>
-          </a>
-          @endif
-        </div>
-        <div class="col-6 text-right">
-          <a href="{{ route('register') }}" class="text-light">
-            <small>{{ __('Create new account') }}</small>
-          </a>
-        </div>
-      </div>
     </div>
   </div>
 </div>
-@endsection
+      @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.user', ['activePage' => 'profile', 'titlePage' => __('Pendaftaran')])
+@extends('layouts.user', ['activePage' => 'profilePemilik', 'titlePage' => __('Pendaftaran')])
 
 @section('content')
 {{-- FORM PENDAFTARAN PROFILE PEMILIK USAHA --}}

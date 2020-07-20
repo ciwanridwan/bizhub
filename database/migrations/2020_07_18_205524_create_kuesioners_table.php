@@ -19,12 +19,12 @@ class CreateKuesionersTable extends Migration
             $table->string('bidang_usaha');
             $table->string('skala_usaha');
             $table->string('existing_pt');
-            $table->string('nama_pt');
-            $table->string('npwp');
-            $table->string('tanggal_berdiri');
-            $table->string('omset_perbulan');
-            $table->string('modal_awal');
-            $table->string('jumlah_kas');
+            $table->string('nama_pt')->nullable();
+            $table->string('npwp')->nullable();
+            $table->string('tanggal_berdiri')->nullable();
+            $table->integer('omset_perbulan');
+            $table->integer('modal_awal');
+            $table->integer('jumlah_kas');
             $table->string('jumlah_karyawan_tetap');
             $table->string('jumlah_karyawan_lengkap');
             $table->string('kondisi_usaha');

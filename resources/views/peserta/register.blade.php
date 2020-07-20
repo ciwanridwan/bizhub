@@ -1,5 +1,4 @@
-@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'register', 'title' => __('Material
-Dashboard')])
+@extends('layouts.new-app')
 
 @section('content')
 <div class="container" style="height: auto;">
@@ -12,13 +11,13 @@ Dashboard')])
           <div class="card-header card-header-primary text-center">
             <h4 class="card-title"><strong>{{ __('Register') }}</strong></h4>
             <div class="social-line">
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+              <a href="https://www.facebook.com/" class="btn btn-just-icon btn-link btn-white">
                 <i class="fa fa-facebook-square"></i>
               </a>
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+              <a href="https://twitter.com/login" class="btn btn-just-icon btn-link btn-white">
                 <i class="fa fa-twitter"></i>
               </a>
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+              <a href="https://gmail.com" class="btn btn-just-icon btn-link btn-white">
                 <i class="fa fa-google-plus"></i>
               </a>
             </div>
@@ -35,7 +34,7 @@ Dashboard')])
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
-                    <i class="material-icons">face</i>
+                    <i class="fa fa-user"></i> 
                   </span>
                 </div>
                 <input type="text" name="nama" class="form-control" placeholder="{{ __('Nama...') }}"
@@ -50,9 +49,7 @@ Dashboard')])
             <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }} mt-3">
               <div class="input-group">
                 <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons">email</i>
-                  </span>
+                  <div class="input-group-text">@</div>
                 </div>
                 <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" required>
               </div>
@@ -66,7 +63,7 @@ Dashboard')])
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
-                    <i class="material-icons">lock_outline</i>
+                    <i class="fa fa-lock"></i>
                   </span>
                 </div>
                 <input type="password" name="password" id="password" class="form-control"
@@ -82,7 +79,7 @@ Dashboard')])
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
-                    <i class="material-icons">lock_outline</i>
+                    <i class="fa fa-lock"></i>
                   </span>
                 </div>
                 <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
@@ -114,4 +111,5 @@ Dashboard')])
     </div>
   </div>
 </div>
+    
 @endsection

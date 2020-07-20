@@ -32,9 +32,7 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
-                    <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#">Dashboard</a>
-                    </div>
+                    @yield('navbar-brand')
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
@@ -43,15 +41,6 @@
                         <span class="navbar-toggler-icon icon-bar"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end">
-                        <form class="navbar-form">
-                            <div class="input-group no-border">
-                                <input type="text" value="" class="form-control" placeholder="Search...">
-                                <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                    <i class="material-icons">search</i>
-                                    <div class="ripple-container"></div>
-                                </button>
-                            </div>
-                        </form>
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link" href="http://bizhub.com/admin/home">
@@ -60,23 +49,6 @@
                                         Stats
                                     </p>
                                 </a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="material-icons">notifications</i>
-                                    <span class="notification">5</span>
-                                    <p class="d-lg-none d-md-block">
-                                        Some Actions
-                                    </p>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                                    <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                                    <a class="dropdown-item" href="#">You&#039;re now friend with Andrew</a>
-                                    <a class="dropdown-item" href="#">Another Notification</a>
-                                    <a class="dropdown-item" href="#">Another One</a>
-                                </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown"
@@ -104,26 +76,7 @@
                 <div class="container-fluid">
                     <nav class="float-left">
                         <ul>
-                            <li>
-                                <a href="https://www.creative-tim.com">
-                                    Creative Tim
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://creative-tim.com/presentation">
-                                    About Us
-                                </a>
-                            </li>
-                            <li>
-                                <a href="http://blog.creative-tim.com">
-                                    Blog
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.creative-tim.com/license">
-                                    Licenses
-                                </a>
-                            </li>
+                           
                         </ul>
                     </nav>
                     <div class="copyright float-right">
@@ -131,8 +84,7 @@
                         <script>
                             document.write(new Date().getFullYear())
                         </script>, made with <i class="material-icons">favorite</i> by
-                        <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> and <a
-                            href="https://www.updivision.com" target="_blank">UPDIVISION</a> for a better web.
+                        <a href="https://www.creative-tim.com" target="_blank">Bizhub</a>
                     </div>
                 </div>
             </footer>
@@ -144,7 +96,7 @@
                 <i class="fa fa-cog fa-2x"> </i>
             </a>
             <ul class="dropdown-menu">
-                <li class="header-title"> Sidebar Filters</li>
+                <li class="header-title"> Tema Sidebar</li>
                 <li class="adjustments-line">
                     <a href="javascript:void(0)" class="switch-trigger active-color">
                         <div class="badge-colors ml-auto mr-auto">
@@ -158,7 +110,7 @@
                         <div class="clearfix"></div>
                     </a>
                 </li>
-                <li class="header-title">Images</li>
+                <li class="header-title">Gambar Sidebar</li>
                 <li class="active">
                     <a class="img-holder switch-trigger" href="javascript:void(0)">
                         <img src="http://bizhub.com/material/img/sidebar-1.jpg" alt="">
@@ -178,42 +130,6 @@
                     <a class="img-holder switch-trigger" href="javascript:void(0)">
                         <img src="http://bizhub.com/material/img/sidebar-4.jpg" alt="">
                     </a>
-                </li>
-                <li class="button-container">
-                    <a href="https://www.creative-tim.com/product/material-dashboard-laravel" target="_blank"
-                        class="btn btn-primary btn-block">Free Download</a>
-                </li>
-                <!-- <li class="header-title">Want more components?</li>
-                  <li class="button-container">
-                      <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
-                        Get the pro version
-                      </a>
-                  </li> -->
-                <li class="button-container">
-                    <a href="https://material-dashboard-laravel.creative-tim.com/docs/getting-started/laravel-setup.html"
-                        target="_blank" class="btn btn-default btn-block">
-                        View Documentation
-                    </a>
-                </li>
-                <li class="button-container">
-                    <a href="https://www.creative-tim.com/product/material-dashboard-pro-laravel" target="_blank"
-                        class="btn btn-danger btn-block btn-round">
-                        Upgrade to PRO
-                    </a>
-                </li>
-                <li class="button-container github-star">
-                    <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard-laravel"
-                        data-icon="octicon-star" data-size="large" data-show-count="true"
-                        aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-                </li>
-                <li class="header-title">Thank you for 95 shares!</li>
-                <li class="button-container text-center">
-                    <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot;
-                        45</button>
-                    <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot;
-                        50</button>
-                    <br>
-                    <br>
                 </li>
             </ul>
         </div>

@@ -1,4 +1,4 @@
-@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'register', 'title' => __('Material Dashboard')])
+@extends('layouts.new-admin')
 
 @section('content')
 <div class="container" style="height: auto;">
@@ -28,7 +28,7 @@
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
-                      <i class="material-icons">face</i>
+                    <i class="fa fa-user"></i> 
                   </span>
                 </div>
                 <input type="text" name="name" class="form-control" placeholder="{{ __('Name...') }}" value="{{ old('name') }}" required>
@@ -42,9 +42,7 @@
             <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }} mt-3">
               <div class="input-group">
                 <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons">email</i>
-                  </span>
+                  <div class="input-group-text">@</div>
                 </div>
                 <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ old('email') }}" required>
               </div>
@@ -58,7 +56,7 @@
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
-                    <i class="material-icons">lock_outline</i>
+                    <i class="fa fa-lock"></i>
                   </span>
                 </div>
                 <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password...') }}" required>
@@ -73,7 +71,7 @@
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
-                    <i class="material-icons">lock_outline</i>
+                    <i class="fa fa-lock"></i>
                   </span>
                 </div>
                 <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Confirm Password...') }}" required>

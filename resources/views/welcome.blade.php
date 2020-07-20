@@ -6,7 +6,7 @@ Dashboard')])
 .about-section {
   padding: 50px;
   text-align: center;
-  background-color: #474e5d;
+  background-color: #3480e3;
   color: white;
 }
 </style>
@@ -54,7 +54,7 @@ Dashboard')])
 </div>
 @endsection
 
-@section('chart')
+    @section('chart')
 <div class="about-section col-md-12">
   <h1>Fitur Yang Kami Sediakan</h1>
 </div>

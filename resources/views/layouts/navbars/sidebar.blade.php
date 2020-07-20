@@ -6,8 +6,8 @@
       Tip 2: you can also add an image using data-image tag
   -->
   <div class="logo">
-    <a href="https://creative-tim.com/" class="simple-text logo-normal">
-      {{ __('Creative Tim') }}
+    <a href="{{route('home')}}/" class="simple-text logo-normal">
+      {{ __('Bizhub') }}
     </a>
   </div>
   <div class="sidebar-wrapper">
@@ -18,34 +18,33 @@
           <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
+
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
           <i class="material-icons">content_paste</i>
-          <p>{{ __('Formulir') }}
+          <p>{{ __('Pendaftaran') }}
             <b class="caret"></b>
           </p>
         </a>
         <div class="collapse show" id="laravelExample">
           <ul class="nav">
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-              {{-- <a class="nav-link" href="{{ route('profile.edit') }}"> --}}
-                <a class="nav-link" href="{{route('formulir-profile-usaha')}}">
-                <i class="material-icons">content_paste</i>
-                <p>{{ __('Profile Usaha') }}</p>
-              </a>
-            </li>
             <li class="nav-item{{ $activePage == 'profile-pemilik' ? ' active' : '' }}">
               <a class="nav-link" href="{{route('formulir-profile-pemilik')}}">
-              {{-- <a class="nav-link" href="{{ route('user.index') }}"> --}}
-                <i class="material-icons">content_paste</i>
+                {{-- <a class="nav-link" href="{{ route('user.index') }}"> --}}
+                <i class="material-icons">account_box</i>
                 <p>{{ __('Profile Pemilik') }}</p>
+              </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'profileUsaha' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('formulir-profile-usaha') }}">
+                <i class="material-icons">how_to_vote</i>
+                <p>{{ __('Profile Usaha') }}</p>
               </a>
             </li>
 
             <li class="nav-item{{ $activePage == 'kuesioner' ? ' active' : '' }}">
-              <a class="nav-link" href="{{route('kuesioner')}}">
-              {{-- <a class="nav-link" href="{{ route('user.index') }}"> --}}
-                <i class="material-icons">content_paste</i>
+              <a class="nav-link" href="{{ route('kuesioner') }}">
+                <i class="material-icons">comment_bank</i>
                 <p>{{ __('Kuesioner') }}</p>
               </a>
             </li>
@@ -67,30 +66,29 @@
         </a>
       </li>
 
-      <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
+      <li class="nav-item{{ $activePage == 'slider' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('slider') }}">
-          <i class="material-icons">more_horiz</i>
+          <i class="material-icons">hdr_strong</i>
           <p>{{ __('Slider') }}</p>
         </a>
       </li>
-
       <li class="nav-item{{ $activePage == 'terverifikasi' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
-          <i class="material-icons">content_paste</i>
+        <a class="nav-link" href="{{route('terverifikasi')}}">
+          <i class="material-icons">fact_check</i>
           <p>{{ __('Wirausaha Terverifikasi') }}</p>
         </a>
       </li>
 
       <li class="nav-item{{ $activePage == 'belum-verifikasi' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
-          <i class="material-icons">content_paste</i>
+        <a class="nav-link" href="{{route('belum-terverifikasi')}}">
+          <i class="material-icons">event_busy</i>
           <p>{{ __('Belum Terverifikasi') }}</p>
         </a>
       </li>
 
       <li class="nav-item{{ $activePage == 'berdasarkan-skala' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
-          <i class="material-icons">content_paste</i>
+        <a class="nav-link" href="{{route('skala')}}">
+          <i class="material-icons">edit_location</i>
           <p>{{ __('Wirausaha Berdasarkan Skala') }}</p>
         </a>
       </li>

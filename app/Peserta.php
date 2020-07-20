@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Peserta extends Authenticatable
 {
     use Notifiable;
-    protected $guarded = [];
+    protected $guarded = ['peserta'];
 
     public function setPasswordAttribute($value)
     {

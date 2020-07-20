@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Peserta;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 
@@ -12,7 +14,7 @@ class PesertaController extends Controller
     public function logout()
     {
         auth()->guard('peserta')->logout(); //JADI KITA LOGOUT SESSION DARI GUARD PESERTA
-        return redirect(route('login-peserta'));
+        return redirect(route('dashboard-peserta'));
     }
 
     public function formLogin()
@@ -50,6 +52,7 @@ class PesertaController extends Controller
      */
     public function index()
     {
+        Session::put('dashboard-peserta', '');
         return view('peserta.dashboard');
     }
 
@@ -93,7 +96,6 @@ class PesertaController extends Controller
         Session::put('message', 'New profile has been created');
         
         return redirect('/register');
-        dd($peserta);
     }
 
     /**
@@ -113,9 +115,11 @@ class PesertaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Request $request)
     {
-        return view('peserta.profile.edit');
+        Session::put('edit-peserta', '');
+        $data = Peserta::find($request->id);
+        return view('peserta.profile.edit')->with('data', $data);
     }
 
     /**
@@ -125,11 +129,26 @@ class PesertaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $data = array(
+            [
+                'nama' => $request->nama,
+                'email' => $request->email
+            ]
+            );
+        auth()->guard('peserta')->update($data);
+
+        Session::put('message', 'Data berhasil diperbaharui');
+        return redirect()->back();
     }
 
+    public function gantiPassword(Request $request)
+    {
+        auth()->guard('peserta')->update(['password' => Hash::make($request->get('password'))]);
+
+        return back()->withStatusPassword(__('Password successfully updated.'));
+    }
     /**
      * Remove the specified resource from storage.
      *
