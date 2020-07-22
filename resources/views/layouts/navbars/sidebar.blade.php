@@ -29,21 +29,21 @@
         <div class="collapse show" id="laravelExample">
           <ul class="nav">
             <li class="nav-item{{ $activePage == 'profile-pemilik' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{route('edit-formulir-profile-pemilik')}}">
                 {{-- <a class="nav-link" href="{{ route('user.index') }}"> --}}
                 <i class="material-icons">account_box</i>
                 <p>{{ __('Profile Pemilik') }}</p>
               </a>
             </li>
             <li class="nav-item{{ $activePage == 'profileUsaha' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{route('edit-formulir-profile-usaha')}}">
                 <i class="material-icons">how_to_vote</i>
                 <p>{{ __('Profile Usaha') }}</p>
               </a>
             </li>
 
             <li class="nav-item{{ $activePage == 'kuesioner' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{route('edit-formulir-kuesioner')}}">
                 <i class="material-icons">comment_bank</i>
                 <p>{{ __('Kuesioner') }}</p>
               </a>

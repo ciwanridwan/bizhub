@@ -20,5 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call('KontakTableSeeder');
         $this->call('MitraTableSeeder');
         $this->call('SliderTableSeeder');
+        $this->call('FormulirKuesionerTableSeeder');
+        $this->call('FormulirProfileUsahaTableSeeder');
+        $this->call('FormulirProfilePemilikTableSeeder');
     }
 }

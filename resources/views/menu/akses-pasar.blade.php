@@ -11,13 +11,13 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-6">
-              <img src="/material/img/blibli.jpg" style="width: 300px; height: 300px; border-radius: 50%;">
+              <img src="{{ asset('material/img/blibli.jpg')}}" style="width: 300px; height: 300px; border-radius: 50%;">
       </div>
       <div class="col-lg-3 col-md-6 col-sm-6">
-              <img src="/material/img/bukalapak.jpg" style="width: 300px; height: 300px; border-radius: 50%;">
+              <img src="{{ asset('material/img/bukalapak.jpg')}}" style="width: 300px; height: 300px; border-radius: 50%;">
       </div>
       <div class="col-lg-3 col-md-6 col-sm-6">
-                <img src="material/img/tokopedia--1200x675.jpg" style="width: 300px; height: 300px; border-radius: 50%;">
+                <img src="{{ asset('material/img/tokopedia--1200x675.jpg')}}" style="width: 300px; height: 300px; border-radius: 50%;">
       </div>
     </div>
   </div>

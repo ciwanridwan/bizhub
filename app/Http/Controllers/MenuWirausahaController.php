@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Kuesioner;
+use App\PertanyaanKuesioner;
 use phpDocumentor\Reflection\Types\Nullable;
 
 class MenuWirausahaController extends Controller
@@ -44,8 +45,9 @@ class MenuWirausahaController extends Controller
      */
     public function isiLaporan()
     {
+        $kuesioner = PertanyaanKuesioner::all();
         Session::put('isi-laporan', '');
-        return view('peserta.isi-laporan');
+        return view('peserta.isi-laporan')->with('kuesioner', $kuesioner);
     }
 
     public function storeKuesioner(Request $request)

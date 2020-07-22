@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Session;
 use App\ProfileUsaha;
 use App\Kota;
 use App\Kecamatan;
+use App\PertanyaanProfilePemilik;
+use App\PertanyaanProfileUsaha;
 use App\Provinsi;
 
 class HalamanPendaftaranController extends Controller
@@ -123,9 +125,10 @@ class HalamanPendaftaranController extends Controller
      */
     public function index()
     {
+        $pemilik = PertanyaanProfilePemilik::all();
         Session::put('profile-pemilik', '');
         $provinsi = Provinsi::orderBy('created_at', 'DESC')->get();
-        return view('pendaftaran.profile-pemilik')->with('provinsi', $provinsi);
+        return view('pendaftaran.profile-pemilik', compact('pemilik', 'provinsi'));
     }
 
     /**
@@ -135,9 +138,10 @@ class HalamanPendaftaranController extends Controller
      */
     public function create()
     {
+        $usaha = PertanyaanProfileUsaha::all();
         Session::put('profile-usaha', '');
         $provinsi = Provinsi::orderBy('created_at', 'DESC')->get();
-        return view('pendaftaran.profile-usaha')->with('provinsi', $provinsi);
+        return view('pendaftaran.profile-usaha', compact('provinsi', 'usaha'));
     }
 
     /**

@@ -11,16 +11,16 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-6">
-              <img src="/material/img/BNI-logo.jpg" style="width: 300px; height: 300px; border-radius: 50%;">
+              <img src="{{ asset('material/img/BNI-logo.jpg')}}" style="width: 300px; height: 300px; border-radius: 50%;">
       </div>
       <div class="col-lg-3 col-md-6 col-sm-6">
-              <img src="/material/img/logo-bca.jpg" style="width: 300px; height: 300px; border-radius: 50%;" >
+              <img src="{{ asset('material/img/logo-bca.jpg')}}" style="width: 300px; height: 300px; border-radius: 50%;" >
       </div>
       <div class="col-lg-3 col-md-6 col-sm-6">
-                <img src="material/img/mandiri-logo.jpg" style="width: 300px; height: 300px; border-radius: 50%;">
+                <img src="{{ asset('material/img/mandiri-logo.jpg')}}" style="width: 300px; height: 300px; border-radius: 50%;">
       </div>
       <div class="col-lg-3 col-md-6 col-sm-6">
-        <img src="material/img/logo-bri.jpg" style="width: 300px; height: 300px; border-radius: 50%;">
+        <img src="{{ asset('material/img/logo-bri.jpg')}}" style="width: 300px; height: 300px; border-radius: 50%;">
       </div>
     </div>
   </div>

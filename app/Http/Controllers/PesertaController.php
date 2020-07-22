@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Peserta;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\UbahPasswordRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 
 class PesertaController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('peserta');
+    // }
     public function logout()
     {
         auth()->guard('peserta')->logout(); //JADI KITA LOGOUT SESSION DARI GUARD PESERTA
@@ -115,11 +121,10 @@ class PesertaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit()
     {
         Session::put('edit-peserta', '');
-        $data = Peserta::find($request->id);
-        return view('peserta.profile.edit')->with('data', $data);
+        return view('peserta.profile.edit');
     }
 
     /**
@@ -131,23 +136,28 @@ class PesertaController extends Controller
      */
     public function update(Request $request)
     {
-        $data = array(
-            [
-                'nama' => $request->nama,
-                'email' => $request->email
-            ]
-            );
-        auth()->guard('peserta')->update($data);
-
-        Session::put('message', 'Data berhasil diperbaharui');
+        auth()->guard('peserta')->user()->update($request->all());
+        Session::put('sukses-update', 'Data Profile Berhasil Diperbarui');
+        
         return redirect()->back();
     }
 
     public function gantiPassword(Request $request)
     {
-        auth()->guard('peserta')->update(['password' => Hash::make($request->get('password'))]);
-
-        return back()->withStatusPassword(__('Password successfully updated.'));
+        $this->validate($request,
+        [
+            'old_password' => 'required|string|min:6',
+            'password' => 'required|string|min:6|confirmed|different:old_password',
+            'password_confirmation' => 'required|string|min:6'
+        ]);
+        auth()->guard('peserta')->user()->update([
+            'password' => $request->password
+        ]);
+        if (!$request->password) {
+            Session::put('gagal-ganti', 'Gagal ganti password, silahkan cek lagi password yang di input');
+        }
+        Session::put('sukses-ganti', 'Password Berhasil Diubah');
+        return redirect()->back();
     }
     /**
      * Remove the specified resource from storage.

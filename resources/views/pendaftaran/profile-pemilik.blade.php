@@ -27,11 +27,12 @@
             </div>
           </div>
           @endif
+          @foreach ($pemilik as $item)
           <div class="row">
-            <label class="col-sm-2 col-form-label">{{ __('Nama Lengkap') }}</label>
+            <label class="col-sm-2 col-form-label">{{ $item->pertanyaan_pertama }}</label>
             <div class="col-sm-7">
               <div class="form-group{{ $errors->has('nama_lengkap') ? ' has-danger' : '' }}">
-                <input class="form-control" input type="text" name="nama_lengkap" placeholder="{{ __('Nama Lengkap') }}"
+                <input class="form-control" input type="text" name="nama_lengkap" placeholder=""
                   value="" required />
                 @if ($errors->has('nama_lengkap'))
                 <span id="name-error" class="error text-danger"
@@ -42,10 +43,10 @@
           </div>
 
           <div class="row">
-            <label class="col-sm-2 col-form-label">{{ __('Alamat') }}</label>
+            <label class="col-sm-2 col-form-label">{{ $item->pertanyaan_kedua }}</label>
             <div class="col-sm-7">
               <div class="form-group{{ $errors->has('alamat') ? ' has-danger' : '' }}">
-                <input class="form-control" name="alamat" id="" type="text" placeholder="{{ __('Alamat') }}" value=""
+                <input class="form-control" name="alamat" id="" type="text" placeholder="" value=""
                   required />
                 @if ($errors->has('alamat'))
                 <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('alamat') }}</span>
@@ -55,7 +56,7 @@
           </div>
 
           <div class="row">
-            <label class="col-sm-2 col-form-label" for="">Propinsi</label>
+            <label class="col-sm-2 col-form-label" for="">{{$item->pertanyaan_ketiga}}</label>
             <div class="col-sm-7">
               <div class="form-group{{ $errors->has('provinsi') ? ' has-danger' : '' }}">
                 <select class="form-control" name="provinsi" id="provinsi_id" required>
@@ -73,7 +74,7 @@
           </div>
 
           <div class="row">
-            <label class="col-sm-2 col-form-label">{{ __('Kota/Kabupaten') }}</label>
+            <label class="col-sm-2 col-form-label">{{$item->pertanyaan_keempat}}</label>
             <div class="col-sm-7">
               <div class="form-group{{ $errors->has('kota') ? ' has-danger' : '' }}">
                 <select name="kota" class="form-control" id="kota_id" required>
@@ -89,7 +90,7 @@
           </div>
 
           <div class="row">
-            <label class="col-sm-2 col-form-label">{{ __('Kecamatan') }}</label>
+            <label class="col-sm-2 col-form-label">{{$item->pertanyaan_kelima}}</label>
             <div class="col-sm-7">
               <div class="form-group{{ $errors->has('kecamatan') ? ' has-danger' : '' }}">
                 <select name="kecamatan" class="form-control" id="kecamatan_id" required>
@@ -106,11 +107,11 @@
           </div>
 
           <div class="row">
-            <label class="col-sm-2 col-form-label">{{ __('Kodepos') }}</label>
+            <label class="col-sm-2 col-form-label">{{$item->pertanyaan_keenam}}</label>
             <div class="col-sm-7">
               <div class="form-group{{ $errors->has('kodepos') ? ' has-danger' : '' }}">
                 <input class="form-control" name="kodepos" id="input-name" type="numeric"
-                  placeholder="{{ __('Kodepos...') }}" value="" required="true" aria-required="true" />
+                  placeholder="" value="" required="true" aria-required="true" />
                 @if ($errors->has('kodepos'))
                 <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('kodepos') }}</span>
                 @endif
@@ -120,11 +121,11 @@
 
 
           <div class="row">
-            <label class="col-sm-2 col-form-label" for="input-nomor_hp">{{ __('Nomor Handphone') }}</label>
+            <label class="col-sm-2 col-form-label" for="input-nomor_hp">{{ $item->pertanyaan_ketujuh }}</label>
             <div class="col-sm-7">
               <div class="form-group{{ $errors->has('nomor_hp') ? ' has-danger' : '' }}">
                 <input class="form-control" name="nomor_hp" id="" type="numeric"
-                  placeholder="{{ __('Nomor Handphone...') }}" value="" required />
+                  placeholder="" value="" required />
                 @if ($errors->has('nomor_hp'))
                 <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('nomor_hp') }}</span>
                 @endif
@@ -133,11 +134,11 @@
           </div>
 
           <div class="row">
-            <label class="col-sm-2 col-form-label" for="input-nomor_wa">{{ __('Nomor Wa') }}</label>
+            <label class="col-sm-2 col-form-label" for="input-nomor_wa">{{ $item->pertanyaan_kedelapan }}</label>
             <div class="col-sm-7">
               <div class="form-group{{ $errors->has('nomor_wa') ? ' has-danger' : '' }}">
                 <input class="form-control" name="nomor_wa" id="" type="numeric"
-                  placeholder="{{ __('Nomor Whatsapp...') }}" value="" required />
+                  placeholder="" value="" required />
                 @if ($errors->has('nomor_wa'))
                 <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('nomor_wa') }}</span>
                 @endif
@@ -146,10 +147,10 @@
           </div>
 
           <div class="row">
-            <label class="col-sm-2 col-form-label" for="input-email">{{ __('Email') }}</label>
+            <label class="col-sm-2 col-form-label" for="input-email">{{ $item->pertanyaan_kesembilan }}</label>
             <div class="col-sm-7">
               <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                <input class="form-control" name="email" id="" type="email" placeholder="{{ __('Email') }}" value=""
+                <input class="form-control" name="email" id="" type="email" placeholder="" value=""
                   required />
                 @if ($errors->has('email'))
                 <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('email') }}</span>
@@ -159,7 +160,7 @@
           </div>
 
           <div class="row">
-            <label class="col-sm-2 col-form-label" for="input-ktp">{{ __('Foto KTP') }}</label>
+            <label class="col-sm-2 col-form-label" for="input-ktp">{{ $item->pertanyaan_kesepuluh }}</label>
             <div class="col-sm-7">
               {{-- <div class="form-group{{ $errors->has('ktp') ? ' has-danger' : '' }}"> --}}
               <input class="form-control" name="ktp" id="" type="file" required />
@@ -176,6 +177,7 @@
         </div>
       </div>
     </form>
+    @endforeach
   </div>
 </div>
   </div>

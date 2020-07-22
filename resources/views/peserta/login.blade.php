@@ -27,12 +27,11 @@
             </div>
           </div>
           <div class="card-body">
-            @if (session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-            @endif
-
-            @if (session('error'))
-            <div class="alert alert-danger">{{ session('error') }}</div>
+            @if (Session::has('error'))
+            <p class="alert alert-danger">
+              {{Session::get('error')}}
+              {{Session::put('error', null)}}
+            </p>
             @endif
 
             <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }}">

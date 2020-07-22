@@ -42,6 +42,7 @@ Route::group(['middleware' => 'peserta'], function () {
 	Route::get('/video-materi-berwirausaha', 'MenuWirausahaController@videoWirausaha')->name('video-berwirausaha');
 	// Route::get('/grafik', 'MenuWirausahaController@index')->name('grafik');
 	Route::post('/update-profile', 'PesertaController@update')->name('update-profile');
+	Route::post('/ubah-password', 'PesertaController@gantiPassword')->name('ubah-password');
 	Route::get('/edit', 'PesertaController@edit')->name('edit-peserta');
 	Route::get('/logout-peserta', 'PesertaController@logout')->name('logout-peserta');
 });
@@ -99,9 +100,12 @@ route::group(['prefix' => 'admin'], function () {
 		Route::get('/kuesioner/export-excell', 'KuesionerController@exportExcell')->name('export-excell');
 
 		Route::group(['prefix' => 'formulir'], function () {
-			Route::get('/profile-usaha', 'FormulirKuesionerController@profileUsaha')->name('formulir-profile-usaha');
-			Route::get('/profile-pemilik', 'FormulirKuesionerController@profilePemilik')->name('formulir-profile-pemilik');
-			Route::get('/kuesioner', 'FormulirKuesionerController@createKuesioner')->name('kuesioner');
+			Route::get('/edit/profile-usaha', 'FormulirKuesionerController@editFormulirProfileUsaha')->name('edit-formulir-profile-usaha');
+			Route::post('/update-profile-usaha', 'FormulirKuesionerController@updateFormulirProfileUsaha')->name('update-formulir-profile-usaha');
+			Route::get('/edit/profile-pemilik', 'FormulirKuesionerController@editFormulirProfilePemilik')->name('edit-formulir-profile-pemilik');
+			Route::post('/update-profile-pemilik', 'FormulirKuesionerController@updateFormulirProfilePemilik')->name('update-formulir-profile-pemilik');
+			Route::get('/edit/kuesioner', 'FormulirKuesionerController@editFormulirKuesioner')->name('edit-formulir-kuesioner');
+			Route::post('/update-kuesioner', 'FormulirKuesionerController@updateFormulirKuesioner')->name('update-formulir-kuesioner');
 		});
 
 		Route::group(['prefix' => 'wirausaha'], function (){

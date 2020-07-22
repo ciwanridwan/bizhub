@@ -15,7 +15,7 @@ class PesertaAuthenticate
      */
     public function handle($request, Closure $next)
     {
-        //JADI KITA CEK, JIKA GUARD CUSTOMER BELUM LOGIN
+        //JADI KITA CEK, JIKA GUARD Peserta BELUM LOGIN
         if (!auth()->guard('peserta')->check()) {
             //MAKA REDIRECT KE HALAMAN LOGIN
             return redirect(route('login-peserta'));

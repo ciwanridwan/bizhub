@@ -40,8 +40,9 @@
                                 </div>
                             </div>
                             @endif
+                            @foreach ($kuesioner as $item)
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">{{ __('Jenis Usaha') }}</label>
+                                <label class="col-sm-2 col-form-label">{{ $item->pertanyaan_pertama}}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('jenis_usaha') ? ' has-danger' : '' }}">
                                         <div class="form-check form-check-radio form-check-inline">
@@ -69,7 +70,7 @@
                             </div>
 
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">{{ __('Bidang Usaha') }}</label>
+                                <label class="col-sm-2 col-form-label">{{ $item->pertanyaan_kedua }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('bidang_usaha') ? ' has-danger' : '' }}">
                                         <div class="form-check form-check-radio">
@@ -111,7 +112,7 @@
                             </div>
 
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">{{ __('Skala Usaha') }}</label>
+                                <label class="col-sm-2 col-form-label">{{ $item->pertanyaan_ketiga }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('skala_usaha') ? ' has-danger' : '' }}">
                                         <div class="form-check form-check-radio">
@@ -153,7 +154,7 @@
                             </div>
 
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">{{ __('Sudah ada PT atau belum') }}</label>
+                                <label class="col-sm-2 col-form-label">{{ $item->pertanyaan_keempat }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('existing_pt') ? ' has-danger' : '' }}">
                                         <div class="form-check form-check-radio">
@@ -178,7 +179,7 @@
                                             <div class="collapse-test">
                                                 <div class="form-group{{ $errors->has('nama_pt') ? ' has-danger' : '' }}">
                                                     <input class="form-control" name="nama_pt" id="input-name"
-                                                        type="text" placeholder="{{ __('Nama PT') }}" value=""
+                                                        type="text" placeholder="{{ $item->pertanyaan_kelima }}" value=""
                                                         />
                                                     @if ($errors->has('nama_pt'))
                                                     <span id="name-error" class="error text-danger"
@@ -187,7 +188,7 @@
                                                 </div>
                                                 <div class="form-group{{ $errors->has('npwp') ? ' has-danger' : '' }}">
                                                     <input class="form-control" name="npwp" id="input-name"
-                                                        type="number" placeholder="{{ __('NPWP') }}" value=""
+                                                        type="number" placeholder="{{ $item->pertanyaan_keenam }}" value=""
                                                         />
                                                     @if ($errors->has('npwp'))
                                                     <span id="name-error" class="error text-danger"
@@ -195,10 +196,10 @@
                                                     @endif
                                                 </div>
                                                 <div class="row">
-                                                <label class="col-sm-2 col-form-label">{{ __('Tanggal berdiri') }}</label>
+                                                <label class="col-sm-2 col-form-label">{{ $item->pertanyaan_ketujuh }}</label>
                                                 <div class="form-group{{ $errors->has('tanggal_berdiri') ? ' has-danger' : '' }}">
                                                     <input class="form-control" name="tanggal_berdiri" id="input-name"
-                                                        type="date" placeholder="{{ __('Nama PT') }}" value=""
+                                                        type="date" placeholder="" value=""
                                                         />
                                                     @if ($errors->has('tanggal_berdiri'))
                                                     <span id="name-error" class="error text-danger"
@@ -229,7 +230,7 @@
                             </div>
 
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">{{ __('Omset Perbulan') }}</label>
+                                <label class="col-sm-2 col-form-label">{{ $item->pertanyaan_kedelapan }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('omset_perbulan') ? ' has-danger' : '' }}">
                                         <input class="form-control" name="omset_perbulan" id="input-name" type="number"
@@ -243,7 +244,7 @@
                             </div>
 
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">{{ __('Modal Awal') }}</label>
+                                <label class="col-sm-2 col-form-label">{{ $item->pertanyaan_kesembilan }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('modal_awal') ? ' has-danger' : '' }}">
                                         <input class="form-control" name="modal_awal" id="input-name" type="number"
@@ -257,7 +258,7 @@
                             </div>
 
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">{{ __('Jumlah Kas Saat ini') }}</label>
+                                <label class="col-sm-2 col-form-label">{{ $item->pertanyaan_kesepuluh }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('jumlah_kas') ? ' has-danger' : '' }}">
                                         <input class="form-control" name="jumlah_kas" id="input-name" type="number"
@@ -271,7 +272,7 @@
                             </div>
 
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">{{ __('Jumlah Karyawan Tetap') }}</label>
+                                <label class="col-sm-2 col-form-label">{{ $item->pertanyaan_kesebelas }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('jumlah_karyawan_tetap') ? ' has-danger' : '' }}">
                                         <input class="form-control" name="jumlah_karyawan_tetap" id="input-name" type="number"
@@ -285,7 +286,7 @@
                             </div>
 
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">{{ __('Jumlah Karyawan Lengkap') }}</label>
+                                <label class="col-sm-2 col-form-label">{{ $item->pertanyaan_keduabelas }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('jumlah_karyawan_lengkap') ? ' has-danger' : '' }}">
                                         <input class="form-control" name="jumlah_karyawan_lengkap" id="input-name" type="number"
@@ -300,7 +301,7 @@
 
 
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">{{ __('Kondisi Terkini Usaha') }}</label>
+                                <label class="col-sm-2 col-form-label">{{ $item->pertanyaan_ketigabelas }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('kondisi_usaha') ? ' has-danger' : '' }}">
                                         <div class="form-check form-check-radio form-check-inline">
@@ -329,7 +330,7 @@
 
                             <div class="row">
                                 <label
-                                    class="col-sm-2 col-form-label">{{ __('Jelaskan Kondisi Mengapa Usaha Anda Bagus/Kurang Bagus ?') }}</label>
+                                    class="col-sm-2 col-form-label">{{ $item->pertanyaan_keempatbelas }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('penjelasan_kondisi') ? ' has-danger' : '' }}">
                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="penjelasan_kondisi"></textarea>
@@ -342,7 +343,7 @@
                             </div>
 
                             <div class="row">
-                                <label class="col-sm-2 col-form-label">{{ __('Jangkauan Area Pelanggan') }}</label>
+                                <label class="col-sm-2 col-form-label">{{ $item->pertanyaan_kelimabelas }}</label>
                                 <div class="col-sm-7">
                                     <div class="form-group{{ $errors->has('jangkauan_area') ? ' has-danger' : '' }}">
                                         <div class="form-check form-check-radio form-check-inline">
@@ -400,7 +401,7 @@
                 </form>
             </div>
         </div>
-
+        @endforeach
     </div>
 </div>
 @endsection

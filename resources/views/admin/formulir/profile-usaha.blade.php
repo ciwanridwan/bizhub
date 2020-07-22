@@ -1,19 +1,17 @@
-@extends('layouts.app', ['activePage' => 'profile', 'titlePage' => __('Formulir Pertanyaan Profile Usaha')])
+@extends('layouts.app', ['activePage' => 'profile', 'titlePage' => __('Formulir Profile Usaha')])
 
 @section('content')
   <div class="content">
     <div class="container-fluid">
-      {{-- FORM PENDAFTARAN PROFILE USAHA --}}
       <div class="row">
         <div class="col-md-12">
-          <form method="post" action="{{ route('profile-usaha') }}" autocomplete="off" class="form-horizontal">
+          <form method="post" action="{{ route('update-formulir-profile-usaha') }}" autocomplete="off" class="form-horizontal">
             @csrf
             @method('post')
 
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title">{{ __('Edit Profile') }}</h4>
-                <p class="card-category">{{ __('User information') }}</p>
+                <h4 class="card-title">{{ __('Edit Formulir Profil Usaha') }}</h4>
               </div>
               <div class="card-body ">
                 @if (session('message'))
@@ -28,133 +26,64 @@
                     </div>
                   </div>
                 @endif
+                @foreach ($usaha as $item)
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Nama Usaha') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __('Pertanyaan Pertama') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('nama_usaha') ? ' has-danger' : '' }}">
-                      <input class="form-control" name="nama_usaha" id="input-name" type="text" placeholder="{{ __('Nama Usaha') }}" value="" required="true" aria-required="true"/>
-                      @if ($errors->has('nama_usaha'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('nama_usaha') }}</span>
+                    <div class="form-group{{ $errors->has('pertanyaan_pertama') ? ' has-danger' : '' }}">
+                      <input class="form-control" name="pertanyaan_pertama" id="input-name" type="text" placeholder="{{ __('') }}" value="{{$item->pertanyaan_pertama}}" required="true" aria-required="true"/> 
+                      @if ($errors->has('pertanyaan_pertama'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('pertanyaan_pertama') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Pertanyaan Kedua') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('pertanyaan_kedua') ? ' has-danger' : '' }}">
+                      <input class="form-control" name="pertanyaan_kedua" id="input-name" type="text" placeholder="{{ __('') }}" value="{{$item->pertanyaan_kedua}}" required="true" aria-required="true"/>
+                      @if ($errors->has('pertanyaan_kedua'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('pertanyaan_kedua') }}</span>
                       @endif
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Badan Usaha') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __('Pertanyaan Ketiga') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('badan_usaha') ? ' has-danger' : '' }}">
-                      <input class="form-control" name="badan_usaha" id="input-name" type="text" placeholder="{{ __('Badan Usaha') }}" value="" required="true" aria-required="true"/>
-                      @if ($errors->has('badan_usaha'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('badan_usaha') }}</span>
+                    <div class="form-group{{ $errors->has('pertanyaan_ketiga') ? ' has-danger' : '' }}">
+                      <input class="form-control" name="pertanyaan_ketiga" id="input-name" type="text" placeholder="{{ __('') }}" value="{{$item->pertanyaan_ketiga}}" required="true" aria-required="true"/>
+                      @if ($errors->has('pertanyaan_ketiga'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('pertanyaan_ketiga') }}</span>
                       @endif
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Jenis Usaha') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __('Pertanyaan Keempat') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('jenis_usaha') ? ' has-danger' : '' }}">
-                      <input class="form-control" name="jenis_usaha" id="input-name" type="text" placeholder="{{ __('Jenis Usaha') }}" value="" required="true" aria-required="true"/>
-                      @if ($errors->has('jenis_usaha'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('jenis_usaha') }}</span>
+                    <div class="form-group{{ $errors->has('pertanyaan_keempat') ? ' has-danger' : '' }}">
+                      <input class="form-control" name="pertanyaan_keempat" id="input-name" type="text" placeholder="{{ __('') }}" value="{{$item->pertanyaan_keempat}}" required="true" aria-required="true"/>
+                      @if ($errors->has('pertanyaan_keempat'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('pertanyaan_keempat') }}</span>
                       @endif
                     </div>
                   </div>
                 </div>
 
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Alamat') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('nama_usaha') ? ' has-danger' : '' }}">
-                      <input class="form-control" name="nama_usaha" id="input-name" type="text" placeholder="{{ __('Alamat') }}" value="" required="true" aria-required="true"/>
-                      @if ($errors->has('nama_usaha'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('nama_usaha') }}</span>
-                      @endif
-                    </div>
-                  </div>
-                </div>
+              
 
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __('Pertanyaan Kelima') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('kelurahan') ? ' has-danger' : '' }}">
-                      <select name="kecamatan" class="form-control form-control-lg">
-                        <option value="">Pilih Kelurahan</option>
-                        <option value="">Kucing</option>
-                        <option value="">Kuda</option>
-                        <option value="">Ayam</option>
-                      </select>
-                      {{-- <input class="form-control" name="kelurahan" id="input-name" type="text" placeholder="{{ __('Alamat') }}" value="" required="true" aria-required="true"/> --}}
-                      @if ($errors->has('kelurahan'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('kelurahan') }}</span>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('kelurahan') ? ' has-danger' : '' }}">
-                      <select name="kecamatan" class="form-control">
-                        <option value="">Pilih Kecamatan</option>
-                        <option value="">Kucing</option>
-                        <option value="">Kuda</option>
-                        <option value="">Ayam</option>
-                      </select>
-                      {{-- <input class="form-control" name="kelurahan" id="input-name" type="text" placeholder="{{ __('Alamat') }}" value="" required="true" aria-required="true"/> --}}
-                      @if ($errors->has('kelurahan'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('kelurahan') }}</span>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('kelurahan') ? ' has-danger' : '' }}">
-                      <select name="kecamatan" class="form-control">
-                        <option value="">Pilih Kota/Kabupaten</option>
-                        <option value="">Kucing</option>
-                        <option value="">Kuda</option>
-                        <option value="">Ayam</option>
-                      </select>
-                      {{-- <input class="form-control" name="kelurahan" id="input-name" type="text" placeholder="{{ __('Alamat') }}" value="" required="true" aria-required="true"/> --}}
-                      @if ($errors->has('kelurahan'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('kelurahan') }}</span>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('kelurahan') ? ' has-danger' : '' }}">
-                      <select name="kecamatan" class="form-control">
-                        <option value="">Pilih Provinsi</option>
-                        <option value="">Kucing</option>
-                        <option value="">Kuda</option>
-                        <option value="">Ayam</option>
-                      </select>
-                      {{-- <input class="form-control" name="kelurahan" id="input-name" type="text" placeholder="{{ __('Alamat') }}" value="" required="true" aria-required="true"/> --}}
-                      @if ($errors->has('kelurahan'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('kelurahan') }}</span>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Kodepos') }}</label>
-                  <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('kelurahan') ? ' has-danger' : '' }}">
-                      <input class="form-control" name="kelurahan" id="input-name" type="text" placeholder="{{ __('Kodepos...') }}" value="" required="true" aria-required="true"/>
-                      @if ($errors->has('kelurahan'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('kelurahan') }}</span>
+                    <div class="form-group{{ $errors->has('pertanyaan_kelima') ? ' has-danger' : '' }}">
+                      <input class="form-control" name="pertanyaan_kelima" id="input-name" type="text" placeholder="{{ __('') }}" value="{{$item->pertanyaan_kelima}}" required="true" aria-required="true"/>
+                      @if ($errors->has('pertanyaan_kelima'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('pertanyaan_kelima') }}</span>
                       @endif
                     </div>
                   </div>
@@ -162,54 +91,88 @@
 
 
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Nomor Kontak') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __('Pertanyaan Keenam') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('nomor_kontak') ? ' has-danger' : '' }}">
-                      <input class="form-control" name="nomor_kontak" id="input-name" type="text" placeholder="{{ __('Nomor Kontak') }}" value="" required="true" aria-required="true"/>
-                      @if ($errors->has('nomor_kontak'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('nomor_kontak') }}</span>
+                    <div class="form-group{{ $errors->has('pertanyaan_keenam') ? ' has-danger' : '' }}">
+                      <input class="form-control" name="pertanyaan_keenam" id="input-name" type="text" placeholder="{{ __('Nomor Kontak') }}" value="{{$item->pertanyaan_keenam}}" required="true" aria-required="true"/>
+                      @if ($errors->has('pertanyaan_keenam'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('pertanyaan_keenam') }}</span>
                       @endif
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Email') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __('Pertanyaan Ketujuh') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                      <input class="form-control" name="email" id="input-email" type="email" placeholder="{{ __('Email') }}" value="" required />
-                      @if ($errors->has('email'))
-                        <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('email') }}</span>
+                    <div class="form-group{{ $errors->has('pertanyaan_ketujuh') ? ' has-danger' : '' }}">
+                      <input class="form-control" name="pertanyaan_ketujuh" id="input-email" type="text" placeholder="{{ __('') }}" value="{{$item->pertanyaan_ketujuh}}" required />
+                      @if ($errors->has('pertanyaan_ketujuh'))
+                        <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('pertanyaan_ketujuh') }}</span>
                       @endif
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Tahun Berdiri') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __('Pertanyaan Kedelapan') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('tahun_berdiri') ? ' has-danger' : '' }}">
-                      <input class="form-control" name="tahun_berdiri" id="input-name" type="text" placeholder="{{ __('Tahun Berdiri') }}" value="" required="true" aria-required="true"/>
-                      @if ($errors->has('tahun_berdiri'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('tahun_berdiri') }}</span>
+                    <div class="form-group{{ $errors->has('pertanyaan_kedelapan') ? ' has-danger' : '' }}">
+                      <input class="form-control" name="pertanyaan_kedelapan" id="input-name" type="text" placeholder="{{ __('Tahun Berdiri') }}" value="{{$item->pertanyaan_kedelapan}}" required="true" aria-required="true"/>
+                      @if ($errors->has('pertanyaan_kedelapan'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('pertanyaan_kedelapan') }}</span>
                       @endif
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Deskripsi Usaha') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __('Pertanyaan Kesembilan') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('nama_usaha') ? ' has-danger' : '' }}">
-                      <input class="form-control" name="nama_usaha" id="input-name" type="text" placeholder="{{ __('Deskripsi Usaha') }}" value="" required="true" aria-required="true"/>
-                      @if ($errors->has('nama_usaha'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('nama_usaha') }}</span>
+                    <div class="form-group{{ $errors->has('pertanyaan_kesembilan') ? ' has-danger' : '' }}">
+                      <input class="form-control" name="pertanyaan_kesembilan" id="input-name" type="text" placeholder="{{ __('Deskripsi Usaha') }}" value="{{$item->pertanyaan_kesembilan}}" required="true" aria-required="true"/>
+                      @if ($errors->has('pertanyaan_kesembilan'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('pertanyaan_kesembilan') }}</span>
                       @endif
                     </div>
                   </div>
                 </div>
 
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Pertanyaan Kesepuluh') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('pertanyaan_kesepuluh') ? ' has-danger' : '' }}">
+                      <input class="form-control" name="pertanyaan_kesepuluh" id="input-name" type="text" placeholder="{{ __('Deskripsi Usaha') }}" value="{{$item->pertanyaan_kesepuluh}}" required="true" aria-required="true"/>
+                      @if ($errors->has('pertanyaan_kesepuluh'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('pertanyaan_kesepuluh') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Pertanyaan kesebelas') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('pertanyaan_kesebelas') ? ' has-danger' : '' }}">
+                      <input class="form-control" name="pertanyaan_kesebelas" id="input-name" type="text" placeholder="{{ __('Deskripsi Usaha') }}" value="{{$item->pertanyaan_kesebelas}}" required="true" aria-required="true"/>
+                      @if ($errors->has('pertanyaan_kesebelas'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('pertanyaan_kesebelas') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Pertanyaan keduabelas') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('pertanyaan_keduabelas') ? ' has-danger' : '' }}">
+                      <input class="form-control" name="pertanyaan_keduabelas" id="input-name" type="text" placeholder="{{ __('Deskripsi Usaha') }}" value="{{$item->pertanyaan_keduabelas}}" required="true" aria-required="true"/>
+                      @if ($errors->has('pertanyaan_keduabelas'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('pertanyaan_keduabelas') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
               </div>
+              @endforeach
               <div class="card-footer ml-auto mr-auto">
                 <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
               </div>
