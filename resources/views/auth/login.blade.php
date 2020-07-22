@@ -67,13 +67,6 @@
         </div>
       </form>
       <div class="row">
-        <div class="col-6">
-            @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}" class="text-light">
-                    <strong style="color: rgb(0, 119, 255);">{{ __('Forgot password?') }}</strong>
-                </a>
-            @endif
-        </div>
         <div class="col-6 text-right">
             <a href="{{ route('register') }}" class="text-light">
                 <strong style="color: rgb(0, 119, 255)">{{ __('Create new account') }}</strong>

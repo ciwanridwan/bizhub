@@ -14,7 +14,7 @@ class AdminController extends Controller
     public function wirausahaBerdasarkanSkala()
     {
         Session::put('skala', '');
-        $data = Kuesioner::all();
+        $data = Kuesioner::paginate(10);
         if (request()->skala_usaha != '') {
             $data = $data->where('skala_usaha', request()->skala_usaha);
         }
@@ -30,6 +30,7 @@ class AdminController extends Controller
     public function wirausahaBelumTerverifikasi()
     {
         $data = Kuesioner::where('status', 0)->get();
+        // $data = Kuesioner::paginate(10);
         $omset = Kuesioner::where('omset_perbulan', '>=', 1)->get();
         // dd($omset);
         if (request()->omset_perbulan != '') {
@@ -44,7 +45,7 @@ class AdminController extends Controller
                 $middle = 'menengah';
             }
         }
-        return view('admin.wirausaha.belum-verifikasi', compact('middle', 'data', 'little', 'omset'));
+        return view('admin.wirausaha.belum-verifikasi', compact('data', 'omset'));
     }
 
     public function updateVerifikasi($id)
@@ -52,12 +53,13 @@ class AdminController extends Controller
         $data = Kuesioner::find($id);
         $data->status = 1;
         $data->update();
-        return redirect('/admin/wirausaha/terverifikasi');
+        return redirect()->back();
     }
     public function wirausahaTerverifikasi()
     {
         Session::put('terverifikasi', '');
         $data = Kuesioner::where('status', 1)->get();
+        // $data = Kuesioner::paginate(3);
         if (request()->provinsi != '') {
             $data = $data->where('provinsi', request()->provinsi);
         }

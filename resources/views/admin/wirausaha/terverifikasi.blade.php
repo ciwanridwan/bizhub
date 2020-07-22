@@ -149,10 +149,9 @@
                                     @php
                                     $increment = $increment + 1;
                                     @endphp
-                                    @endforeach
+                                    @endforeach            
                                 </tbody>
                             </table>
-                           
                         </div>
                     </div>
                 </div>

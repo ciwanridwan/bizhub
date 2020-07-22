@@ -103,7 +103,7 @@
             {{Session::put('edit-peserta', null)}}
             @else
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('edit-peserta')}}">
                     <i class="material-icons">person</i>
                     <p>Profile</p>
                 </a>

@@ -53,8 +53,7 @@ class MenuWirausahaController extends Controller
     public function storeKuesioner(Request $request)
     {
         if (
-            !$request->jenis_usaha || !$request->bidang_usaha || !$request->skala_usaha || !$request->existing_pt || !$request->nama_pt ||
-            !$request->npwp || !$request->tanggal_berdiri || !$request->omset_perbulan || !$request->modal_awal || !$request->jumlah_kas || !$request->jumlah_karyawan_tetap || !$request->jumlah_karyawan_lengkap || !$request->kondisi_usaha || !$request->penjelasan_kondisi || !$request->jangkauan_area
+            !$request->jenis_usaha || !$request->bidang_usaha || !$request->skala_usaha || !$request->existing_pt ||  !$request->omset_perbulan || !$request->modal_awal || !$request->jumlah_kas || !$request->jumlah_karyawan_tetap || !$request->jumlah_karyawan_lengkap || !$request->kondisi_usaha || !$request->penjelasan_kondisi || !$request->jangkauan_area
         ) {
             Session::put('error', 'Semua field Harus Diisi');
         }

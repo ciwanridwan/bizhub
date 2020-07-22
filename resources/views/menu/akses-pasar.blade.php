@@ -11,13 +11,29 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-6">
-              <img src="{{ asset('material/img/blibli.jpg')}}" style="width: 300px; height: 300px; border-radius: 50%;">
+        <div class="card card-chart">
+          <div class="card-body" style="border-radius: 0%">
+            <h4 class="card-title" style="text-align: center">BLIBLI</h4>
+            <img src="{{ asset('material/img/blibli.jpg')}}" style="width: 250px; height: 200px; border-radius: 50%;">
+          </div>
+        </div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-6">
-              <img src="{{ asset('material/img/bukalapak.jpg')}}" style="width: 300px; height: 300px; border-radius: 50%;">
+        <div class="card card-chart">
+          <div class="card-body" style="border-radius: 0%">
+            <h4 class="card-title" style="text-align: center">BUKALAPAK</h4>
+            <img src="{{ asset('material/img/bukalapak.jpg')}}" style="width: 250px; height: 200px; border-radius: 50%;">
+          </div>
+        </div>
+              
       </div>
       <div class="col-lg-3 col-md-6 col-sm-6">
-                <img src="{{ asset('material/img/tokopedia--1200x675.jpg')}}" style="width: 300px; height: 300px; border-radius: 50%;">
+        <div class="card card-chart">
+          <div class="card-body" style="border-radius: 0%">
+            <h4 class="card-title" style="text-align: center">TOKOPEDIA</h4>
+            <img src="{{ asset('material/img/tokopedia--1200x675.jpg')}}" style="width: 200px; height: 200px;">
+          </div>
+                
       </div>
     </div>
   </div>

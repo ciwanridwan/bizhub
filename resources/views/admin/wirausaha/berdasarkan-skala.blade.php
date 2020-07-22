@@ -43,15 +43,6 @@
                                 </div>
                             </div>
                         </form>
-                        {{-- <form class="navbar-form">
-                            <div class="input-group no-border">
-                            <input type="text" value="" class="form-control" placeholder="Search...">
-                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                              <i class="material-icons">search</i>
-                              <div class="ripple-container"></div>
-                            </button>
-                            </div>
-                          </form> --}}
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
@@ -99,7 +90,7 @@
                                 $increment = 1;
                                 @endphp
                                 <tbody>
-                                    @foreach ($data as $item)
+                                    @forelse ($data as $item)
                                     <tr>
                                         <td>
                                             {{$increment}}
@@ -162,9 +153,14 @@
                                     @php
                                     $increment = $increment + 1;
                                     @endphp
-                                    @endforeach
+                                     @empty
+                                     <tr>
+                                         <td colspan="13" class="text-center text-primary"> <h3>Belum Ada Data </h3></td>
+                                     </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
+                            {{ $data->links() }}
                         </div>
                     </div>
                 </div>
