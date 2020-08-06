@@ -48,7 +48,7 @@
                         {{$item->badan_usaha}}
                       </td>
                     <td class="td-actions text-right">
-                      <a type="button" rel="tooltip" class="btn btn-success btn-simple" href="/admin/mitra/edit/{{$item->id}}">
+                      <a type="button" rel="tooltip" class="btn btn-success btn-simple" href="{{route('edit-mitra', $item->id)}}">
                         <i class="material-icons">edit</i>
                       </a>
                     </td>

@@ -86,6 +86,7 @@ route::group(['prefix' => 'admin'], function () {
 			return view('pages.upgrade');
 		})->name('upgrade');
 
+		Route::get('/chart', 'ChartController@index');
 		Route::get('/kontak-kami', 'AdminController@kontakKami')->name('kontak-kami');
 		Route::get('/kontak/edit/{id}', 'AdminController@editKontak')->name('edit-kontak');
 		Route::post('/update-kontak', 'AdminController@updateKontak')->name('update-kontak');

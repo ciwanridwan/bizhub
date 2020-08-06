@@ -15,18 +15,12 @@
           <h4 class="card-title">{{ __('Profile Pemilik') }}</h4>
         </div>
         <div class="card-body ">
-          @if (session('message'))
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="alert alert-success">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <i class="material-icons">close</i>
-                </button>
-                <span>{{ session('message') }}</span>
-              </div>
-            </div>
-          </div>
-          @endif
+          @if (Session::has('message'))
+              <p class="alert alert-success">
+                  {{Session::get('message')}}
+                  {{Session::put('message', null)}}
+              </p>
+              @endif
           @foreach ($pemilik as $item)
           <div class="row">
             <label class="col-sm-2 col-form-label">{{ $item->pertanyaan_pertama }}</label>

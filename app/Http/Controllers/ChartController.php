@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Kuesioner;
 use Illuminate\Http\Request;
 
 class ChartController extends Controller
@@ -13,7 +14,8 @@ class ChartController extends Controller
      */
     public function index()
     {
-        //
+        $result = Kuesioner::where('omset_perbulan', '>' ,'1')->orderBy('omset_perbulan', 'ASC')->get();
+        return response()->json($result);
     }
 
     /**

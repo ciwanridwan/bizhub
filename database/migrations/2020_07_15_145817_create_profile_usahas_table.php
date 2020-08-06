@@ -27,6 +27,7 @@ class CreateProfileUsahasTable extends Migration
             $table->string('email');
             $table->string('tahun_berdiri');
             $table->string('deskripsi_usaha');
+            $table->string('upload_proposal');
             $table->timestamps();
         });
     }

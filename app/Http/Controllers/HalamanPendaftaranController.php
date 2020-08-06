@@ -47,8 +47,10 @@ class HalamanPendaftaranController extends Controller
             'email' => 'required',
             'tahun_berdiri' => 'required',
             'deskripsi_usaha' => 'required',
+            'upload_proposal' => 'required|nullable'
         ]);
 
+        $path = $request->file('upload_proposal')->store('files');
         $profileUsaha = new ProfileUsaha();
         $profileUsaha->nama_usaha = $request->input('nama_usaha');
         $profileUsaha->badan_usaha = $request->input('badan_usaha');
@@ -62,6 +64,7 @@ class HalamanPendaftaranController extends Controller
         $profileUsaha->tahun_berdiri = $request->input('tahun_berdiri');
         $profileUsaha->email = $request->input('email');
         $profileUsaha->deskripsi_usaha = $request->input('deskripsi_usaha');
+        $profileUsaha->upload_proposal = $path;
         $profileUsaha->save();
         // dd($profileUsaha);
 
@@ -95,7 +98,7 @@ class HalamanPendaftaranController extends Controller
             $fileNameWithExtension = $request->file('ktp')->getClientOriginalName();
             $fileName = pathinfo($fileNameWithExtension, PATHINFO_FILENAME);
             $extension = $request->file('ktp')->getClientOriginalExtension();
-            $fileNameToStore = $fileName . '_' . time() . '' . $extension;
+            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
             $path = $request->file('ktp')->storeAs('public/images', $fileNameToStore);
         } else {
             $fileNameToStore = 'noimage.jpg';

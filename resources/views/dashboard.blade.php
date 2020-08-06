@@ -49,16 +49,59 @@
           </div>
         </div>
       </div>
+      {{-- <div class="panel panel-default">
+        <div class="panel-heading"><b>Charts</b></div>
+        <div class="panel-body">
+            <canvas id="canvas" height="280" width="600"></canvas>
+        </div>
+    </div> --}}
     </div>
   </div>
 </div>
 @endsection
 
 @push('js')
-  <script>
-    $(document).ready(function() {
+<script>
+  $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       md.initDashboardPageCharts();
     });
-  </script>
+</script>
 @endpush
+
+@section('chart-omset')
+<script>
+  var url = "{{url('admin/chart')}}";
+  var Labels = new Array();
+  var Omset = new Array();
+  $(document).ready(function(){
+    $.get(url, function(response){
+      response.forEach(function(data){
+          Labels.push(data.omset_perbulan);
+          Omset.push(data.omset_perbulan);
+      });
+      var ctx = document.getElementById("canvas").getContext('2d');
+          var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels:Omset,
+                datasets: [{
+                    label: 'Omset Perbulan',
+                    data: Omset,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+    });
+  });
+</script>
+@endsection

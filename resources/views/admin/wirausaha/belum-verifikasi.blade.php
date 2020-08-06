@@ -123,13 +123,13 @@
                                         </td>
                                         @endif
                                         <td>
-                                            {{$item->omset_perbulan}}
+                                            Rp {{ number_format($item->omset_perbulan, 0, ',', '.')}}
                                         </td>
                                         <td>
-                                            {{$item->modal_awal}}
+                                            Rp {{ number_format($item->modal_awal, 0, ',', '.')}}
                                         </td>
                                         <td>
-                                            {{$item->jumlah_kas}}
+                                            Rp {{number_format($item->jumlah_kas, 0, ',', '.')}}
                                         </td>
                                         <td>
                                             {{$item->jumlah_karyawan_tetap}}

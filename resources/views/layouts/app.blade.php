@@ -126,7 +126,9 @@
         <!-- Material Dashboard DEMO methods, don't include it in your project! -->
         <script src="{{ asset('material') }}/demo/demo.js"></script>
         <script src="{{ asset('material') }}/js/settings.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
         @stack('js')
         {{-- @yield('js-modal') --}}
+        {{-- @yield('chart-omset') --}}
     </body>
 </html>

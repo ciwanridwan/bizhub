@@ -38,6 +38,7 @@ class FormulirKuesionerController extends Controller
 
     public function editFormulirKuesioner(Request $request)
     {
+        Session::put('formulir-kuesioner', '');
         $kuesioner = PertanyaanKuesioner::all();
         // $kuesioner = array();
         return view('admin.formulir.kuesioner')->with('kuesioner', $kuesioner);
@@ -45,6 +46,7 @@ class FormulirKuesionerController extends Controller
     
     public function editFormulirProfilePemilik(Request $request)
     {
+        Session::put('formulir-profile-pemilik', '');
         $pemilik = PertanyaanProfilePemilik::all();
         return view('admin.formulir.profile-pemilik')->with('pemilik', $pemilik);
     }
@@ -91,6 +93,7 @@ class FormulirKuesionerController extends Controller
 
     public function editFormulirProfileUsaha(Request $request)
     {
+        Session::put('formulir-profile-usaha', '');
         $usaha = PertanyaanProfileUsaha::all();
         return view('admin.formulir.profile-usaha')->with('usaha', $usaha);
     }

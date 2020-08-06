@@ -1,4 +1,4 @@
-@extends('layouts.user', ['activePage' => 'profile', 'titlePage' => __('Edit Slider')])
+@extends('layouts.app', ['activePage' => 'profile', 'titlePage' => __('Edit Slider')])
 
 @section('content')
 <div class="content">

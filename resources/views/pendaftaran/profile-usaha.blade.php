@@ -6,7 +6,7 @@
     {{-- FORM PENDAFTARAN PROFILE USAHA --}}
     <div class="row">
       <div class="col-md-12">
-        <form method="post" action="{{ route('profile-usaha') }}" autocomplete="off" class="form-horizontal">
+        <form method="post" action="{{ route('profile-usaha') }}" autocomplete="off" class="form-horizontal" enctype="multipart/form-data">
           @csrf
           @method('post')
 
@@ -20,19 +20,6 @@
                   {{Session::get('message')}}
                   {{Session::put('message', null)}}
               </p>
-              @endif
-
-              @if (session('message'))
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="alert alert-success">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <i class="material-icons">close</i>
-                    </button>
-                    <span>{{ session('message') }}</span>
-                  </div>
-                </div>
-              </div>
               @endif
 
               @foreach ($usaha as $item)
@@ -215,6 +202,19 @@
                 </div>
               </div>
             </div>
+
+            <div class="row">
+              <label class="col-sm-2 col-form-label" for="input-upload_proposal">Upload Proposal</label>
+              <div class="col-sm-7">
+                {{-- <div class="form-group{{ $errors->has('ktp') ? ' has-danger' : '' }}"> --}}
+                <input class="form-control" name="upload_proposal" id="" type="file" required />
+                @if ($errors->has('ktp'))
+                <span id="name-error" class="error text-danger" for="input-upload_proposal">{{ $errors->first('upload_proposal') }}</span>
+                @endif
+                {{-- </div> --}}
+              </div>
+            </div>
+          </div>
 
           </div>
           <div class="card-footer ml-auto mr-auto">

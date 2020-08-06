@@ -45,7 +45,7 @@
                       {{$item->slider3}}
                     </td>
                     <td class="td-actions text-right">
-                      <a type="button" rel="tooltip" class="btn btn-success btn-simple" href="/admin/slider/edit/{{$item->id}}">
+                      <a type="button" rel="tooltip" class="btn btn-success btn-simple" href="{{route('edit-slider', $item->id)}}">
                         <i class="material-icons">edit</i>
                       </a>
                     </td>

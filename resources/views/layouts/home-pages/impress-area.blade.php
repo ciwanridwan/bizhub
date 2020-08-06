@@ -6,7 +6,7 @@
                 <br>
             </div>
             <div class="col-lg-4" style="color: white;">
-                <h1>Klien Kami</h1>
+                <h1>Mitra Kami</h1>
                 <br>
             </div>
             <div class="col-lg-4">

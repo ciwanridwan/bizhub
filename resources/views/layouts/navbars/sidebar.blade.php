@@ -19,7 +19,7 @@
         </a>
       </li>
 
-      <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
+      <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
           <i class="material-icons">content_paste</i>
           <p>{{ __('Formulir') }}
@@ -28,26 +28,56 @@
         </a>
         <div class="collapse show" id="laravelExample">
           <ul class="nav">
-            <li class="nav-item{{ $activePage == 'profile-pemilik' ? ' active' : '' }}">
+            @if (Session::has('formulir-profile-pemilik'))
+            <li class="nav-item active">
               <a class="nav-link" href="{{route('edit-formulir-profile-pemilik')}}">
-                {{-- <a class="nav-link" href="{{ route('user.index') }}"> --}}
                 <i class="material-icons">account_box</i>
-                <p>{{ __('Profile Pemilik') }}</p>
+                <p>Profile Pemilik</p>
               </a>
             </li>
-            <li class="nav-item{{ $activePage == 'profileUsaha' ? ' active' : '' }}">
+            {{Session::put('formulir-profile-pemilik', null)}}
+            @else
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('edit-formulir-profile-pemilik')}}">
+                <i class="material-icons">account_box</i>
+                <p>Profile Pemilik</p>
+              </a>
+            </li>
+            @endif
+
+            @if (Session::has('formulir-profile-usaha'))
+            <li class="nav-item active">
               <a class="nav-link" href="{{route('edit-formulir-profile-usaha')}}">
                 <i class="material-icons">how_to_vote</i>
-                <p>{{ __('Profile Usaha') }}</p>
+                <p>Profile Usaha</p>
               </a>
             </li>
-
-            <li class="nav-item{{ $activePage == 'kuesioner' ? ' active' : '' }}">
+            {{Session::put('formulir-profile-usaha', null)}}
+            @else
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('edit-formulir-profile-usaha')}}">
+                <i class="material-icons">how_to_vote</i>
+                <p>Profile Usaha</p>
+              </a>
+            </li>
+            @endif
+            
+            @if (Session::has('formulir-kuesioner'))
+            <li class="nav-item active">
               <a class="nav-link" href="{{route('edit-formulir-kuesioner')}}">
                 <i class="material-icons">comment_bank</i>
-                <p>{{ __('Kuesioner') }}</p>
+                <p>Kuesioner</p>
+              </a>
+            </li> 
+            {{Session::put('formulir-kuesioner', null)}}
+            @else
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('edit-formulir-kuesioner')}}">
+                <i class="material-icons">comment_bank</i>
+                <p>Kuesioner</p>
               </a>
             </li>
+            @endif
           </ul>
         </div>
       </li>
